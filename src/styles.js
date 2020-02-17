@@ -53,5 +53,16 @@ export default StyleSheet.create({
     galleryImage: { 
         width: 75, 
         height: 75 
-    }
+    },
+    instructionsPage: {
+        textAlign: 'center',
+        paddingTop: 100,
+        fontSize: 25
+    },
+    item: {
+        padding: 10,
+        fontSize: 18,
+
+    },
+
 });

@@ -6,6 +6,7 @@ import * as Permissions from 'expo-permissions';
 import styles from './styles';
 import Toolbar from './toolbar.component';
 import Gallery from './gallery.component';
+import Instructions from './instructions.component';
 
 
 export default class CameraPage extends React.Component {
@@ -54,7 +55,7 @@ export default class CameraPage extends React.Component {
             return <Text>Access to camera has been denied.</Text>;
         }
         if(!cameraOpen){
-            return <Text>These are instructions!</Text>
+            return <Instructions />
         }
 
         return (
