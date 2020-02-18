@@ -15,4 +15,4 @@ const InstructionsPage = ({ navigation }) => {
     )
 }
 
-export default InstructionsPage;    
+export default InstructionsPage;
