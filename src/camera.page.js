@@ -1,85 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
-import { Camera } from 'expo-camera';
-import * as Permissions from 'expo-permissions';
+import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import styles from './styles';
-import Toolbar from './toolbar.component';
-import Gallery from './gallery.component';
-import Instructions from './instructions.component';
 
+const CameraPage = ({ navigation }) => {
+    var camera = null;
+    const [hasCameraPermission, setHasCameraPermission] = useState(null);
 
-export default class CameraPage extends React.Component {
-    camera = null;
-    state = {
-        captures: [],
-        // setting flash to be turned off by default
-        flashMode: Camera.Constants.FlashMode.off,
-        capturing: null,
-        // start the back camera by default
-        cameraType: Camera.Constants.Type.back,
-        hasCameraPermission: null,
-        cameraOpen: true,
+    useEffect(() => {
+        (async () => {
+          const { status } = await BarCodeScanner.requestPermissionsAsync();
+          setHasCameraPermission(status === 'granted');
+        })();
+      }, []);
+
+    const handleBarCodeScanned = ({ type, data }) => {
+        console.log(type, data);
+        navigation.navigate('Instructions');
     };
 
-    setFlashMode = (flashMode) => this.setState({ flashMode });
-    setCameraType = (cameraType) => this.setState({ cameraType });
-    setCameraOpen = (cameraOpen) => this.setState({cameraOpen});
+    if (hasCameraPermission === null) {
+        return <View />;
+    } else if (hasCameraPermission === false) {
+        return <Text>Access to camera has been denied.</Text>;
+    }
 
-    handleShortCapture = async () => {
-        console.log("Photo Taken");
-        const photoData = await this.camera.takePictureAsync();
-        this.setState({ capturing: false, captures: [photoData, ...this.state.captures] })
-        this.setCameraOpen(false);
-    };
-
-
-    async componentDidMount() {
-        const camera = await Permissions.askAsync(Permissions.CAMERA);
-        const audio = await Permissions.askAsync(Permissions.AUDIO_RECORDING);
-        const hasCameraPermission = (camera.status === 'granted' && audio.status === 'granted');
-
-        this.setState({ hasCameraPermission });
-    };
-
-    barCodeScan = async () => {
-        return null;
-    };
-
-    render() {
-        const { hasCameraPermission, flashMode, cameraType, capturing, captures, cameraOpen } = this.state;
-
-        if (hasCameraPermission === null) {
-            return <View />;
-        } else if (hasCameraPermission === false) {
-            return <Text>Access to camera has been denied.</Text>;
-        }
-        if(!cameraOpen){
-            return <Instructions />
-        }
-
-        return (
-            <React.Fragment>
-                <View>
-                    <Camera
-                        type={cameraType}
-                        flashMode={flashMode}
-                        style={styles.preview}
-                        ref={camera => this.camera = camera}
-                    />
-                </View>
-
-                {captures.length > 0 && <Gallery captures={captures}/>}
-
-                <Toolbar 
-                    capturing={capturing}
-                    flashMode={flashMode}
-                    cameraType={cameraType}
-                    setFlashMode={this.setFlashMode}
-                    setCameraType={this.setCameraType}
-                    onShortCapture={this.handleShortCapture}
-                />
-            </React.Fragment>
-        );
-    };
+    return (
+        <React.Fragment>
+            <BarCodeScanner
+                onBarCodeScanned={ handleBarCodeScanned }
+                style={styles.preview}
+            />
+        </React.Fragment>
+    );
 };
+
+export default CameraPage;
