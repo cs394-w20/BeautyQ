@@ -23,6 +23,20 @@ export default StyleSheet.create({
         height: 100,
         bottom: 0,
     },
+    button: {
+        backgroundColor: '#f6e0c9',
+        borderRadius: 10,
+        alignItems: 'center',
+        marginLeft: '25%',
+        padding: 1,
+        width: '50%'
+    },
+    buttonText: {
+        textAlign: 'center',
+        paddingTop: 10,
+        paddingBottom: 10,
+        fontSize: 25
+    },
     captureBtn: {
         width: 60,
         height: 60,
@@ -42,6 +56,11 @@ export default StyleSheet.create({
         backgroundColor: "red",
         borderColor: "transparent",
     },
+    container: {
+        flex: 1,
+        marginTop: 15,
+        marginHorizontal: 16,
+      },
     galleryContainer: { 
         bottom: 100 
     },
