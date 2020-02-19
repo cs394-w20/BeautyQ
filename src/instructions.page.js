@@ -6,32 +6,35 @@ import * as Speech from 'expo-speech';
 
 
 const InstructionsPage = ({ navigation }) => { 
-    const sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-      }
+
+    const speak = async (text, time) => {
+        setTimeout(() => {
+            Speech.pause();
+        }, time);
+
+        setTimeout(() => {
+            Speech.resume();
+            Speech.speak(text);
+        }, time);
+
+        return null;
+    }
+
+    const instructions = [
+        "Apply a very generous, non-transparent layer to clean skin, thoroughly covering entire face", 
+        "Allow to remain on for five to ten minutes",
+        "Rinse thoroughly with warm water"
+    ];
 
     const Speak = () => {
-        Speech.speak("Apply a very generous, non-transparent layer to clean skin, thoroughly covering entire face");
+        speak(instructions[0], 0).then(() => {
+            speak(instructions[1], 9000).then(() => {
+                speak(instructions[2], 15000).then(() => {
+
+                })
+            })
+        })
         
-        setTimeout(() => {
-            Speech.pause();
-        }, 9000);
-
-        setTimeout(() => {
-            Speech.resume();
-            Speech.speak("Allow to remain on for five to ten minutes");
-
-        }, 9000);
-
-        setTimeout(() => {
-            Speech.pause();
-        }, 19000);
-
-        setTimeout(() => {
-            Speech.resume();
-            Speech.speak("Rinse thoroughly with warm water");
-
-        }, 25000);
     };
     return (
         <View style={styles.container}>
