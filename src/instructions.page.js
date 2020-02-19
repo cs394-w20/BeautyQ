@@ -1,13 +1,17 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import styles from './styles';
-//import Tts from 'react-native-tts';
+// import { Tts } from 'react-native-tts';
+import * as Speech from 'expo-speech';
 
 
 const InstructionsPage = ({ navigation }) => { 
 
     const Speak = () => {
-        //Tts.speak('Hello, world!');
+        Speech.speak("Apply a very generous, non-transparent layer to clean skin, thoroughly covering entire face");
+        Speech.speak("Allow to remain on for five to ten minutes");
+        Speech.speak("Rinse thoroughly with warm water");
+
         console.log('Speaking');
     };
     return (
@@ -24,3 +28,4 @@ const InstructionsPage = ({ navigation }) => {
 }
 
 export default InstructionsPage;
+
