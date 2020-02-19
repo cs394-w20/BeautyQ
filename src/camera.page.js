@@ -5,12 +5,11 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from './styles';
 
 const CameraPage = ({ navigation }) => {
-    var hasCameraPermission = null;
-
+    const [hasCameraPermission, setHasCameraPermission] = useState(null);
     useEffect(() => {
         (async () => {
           const { status } = await BarCodeScanner.requestPermissionsAsync();
-          hasCameraPermission = (status === 'granted');
+          setHasCameraPermission(status === 'granted');
         })();
       }, []);
 
