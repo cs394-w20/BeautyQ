@@ -12,9 +12,9 @@ const InstructionsPage = ({ navigation }) => {
             backgroundColor: '#b76e79',
             borderRadius: 10,
             width: '33.33%',        
-            marginTop: 20,
-            alignContent: 'flex-start'
-            }
+            marginTop: 10,
+            marginBottom: 10,
+        }
       });
 
     const speak = async (text, time) => {
@@ -46,11 +46,20 @@ const InstructionsPage = ({ navigation }) => {
         })
         
     };
+
+    const ReadDirn = () => {
+        setbuttonActive({ active: 1});
+    };
+
+    const Tutorial = () => {
+        setbuttonActive({ active: 3});
+    };
+
     return (
         <View style={styles.container}>
             <Image
             style={styles.productImage}
-            source={require('C:/Users/maste/Documents/BeautyQ/assets/images/shopping.png')}
+            source={require('../assets/images/shopping.png')}
             />
             <Text style={styles.instructionsPage}>
                 Instructions for PETER THOMAS ROTH 24K Gold Mask Pure Luxury Lift & Firm Mask 
@@ -61,9 +70,9 @@ const InstructionsPage = ({ navigation }) => {
                 <Text style={styles.item}>{instructions[2]}</Text>
             </View>            
             <View style={styles.buttons}>
-                <TouchableOpacity style={buttonActive.active==1? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Read Directions</Text></TouchableOpacity>
+                <TouchableOpacity onPress={ReadDirn} style={buttonActive.active==1? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Read Directions</Text></TouchableOpacity>
                 <TouchableOpacity onPress={Speak} style={buttonActive.active==2? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Step-by-step</Text></TouchableOpacity>
-                <TouchableOpacity style={buttonActive.active==3? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
+                <TouchableOpacity onPress={Tutorial} style={buttonActive.active==3? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
             </View>            
         </View>
     )

@@ -33,15 +33,16 @@ export default StyleSheet.create({
     Button: {
         backgroundColor: '#f6e0c9',
         borderRadius: 10,
-        width: '33.33%',        
-        marginTop: 20,
-        alignContent: 'flex-start'
+        width: '33.33%',
+        marginTop: 10,
+        marginBottom: 10,
+        
     },
     buttonText: {
         textAlign: 'center',
-        textAlignVertical: "center",
         padding: 10,
         fontSize: 20,
+        textAlignVertical: 'center'
     },
     captureBtn: {
         width: 60,
