@@ -3,6 +3,10 @@ import { StyleSheet, Dimensions } from 'react-native';
 const { width: winWidth, height: winHeight } = Dimensions.get('window');
 
 export default StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 10,
+    },
     preview: {
         height: winHeight,
         width: winWidth,
@@ -23,19 +27,21 @@ export default StyleSheet.create({
         height: 100,
         bottom: 0,
     },
-    button: {
+    buttons: {
+        flexDirection: 'row',
+    },
+    Button: {
         backgroundColor: '#f6e0c9',
         borderRadius: 10,
-        alignItems: 'center',
-        marginLeft: '25%',
-        padding: 1,
-        width: '50%'
+        width: '33.33%',        
+        marginTop: 20,
+        alignContent: 'flex-start'
     },
     buttonText: {
         textAlign: 'center',
-        paddingTop: 10,
-        paddingBottom: 10,
-        fontSize: 25
+        textAlignVertical: "center",
+        padding: 10,
+        fontSize: 20,
     },
     captureBtn: {
         width: 60,
@@ -56,11 +62,10 @@ export default StyleSheet.create({
         backgroundColor: "red",
         borderColor: "transparent",
     },
-    container: {
-        flex: 1,
-        marginTop: 15,
-        marginHorizontal: 16,
-      },
+    item: {
+        paddingTop: 10,
+        fontSize: 18
+    },    
     galleryContainer: { 
         bottom: 100 
     },
@@ -75,13 +80,17 @@ export default StyleSheet.create({
     },
     instructionsPage: {
         textAlign: 'center',
-        paddingTop: 100,
         fontSize: 25
     },
-    item: {
-        padding: 10,
-        fontSize: 18,
+    instructions: {
+        alignContent: 'center',
+        justifyContent: 'center',
+        padding: 10
 
     },
-
+    productImage: {
+        height: 200,
+        width: 200,
+        marginLeft: '20%',
+    },
 });

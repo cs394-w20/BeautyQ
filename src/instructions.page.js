@@ -1,11 +1,21 @@
-import React from 'react';
-import { View, Text, Button, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Image, TouchableHighlight } from 'react-native';
 import styles from './styles';
 // import { Tts } from 'react-native-tts';
 import * as Speech from 'expo-speech';
 
 
-const InstructionsPage = ({ navigation }) => { 
+const InstructionsPage = ({ navigation }) => {
+    const [buttonActive, setbuttonActive] = useState({ active: 2 });
+    const localStyle = StyleSheet.create({
+        pressed: {
+            backgroundColor: '#b76e79',
+            borderRadius: 10,
+            width: '33.33%',        
+            marginTop: 20,
+            alignContent: 'flex-start'
+            }
+      });
 
     const speak = async (text, time) => {
         setTimeout(() => {
@@ -16,7 +26,6 @@ const InstructionsPage = ({ navigation }) => {
             Speech.resume();
             Speech.speak(text);
         }, time);
-
         return null;
     }
 
@@ -27,6 +36,7 @@ const InstructionsPage = ({ navigation }) => {
     ];
 
     const Speak = () => {
+        setbuttonActive({ active: 2});
         speak(instructions[0], 0).then(() => {
             speak(instructions[1], 9000).then(() => {
                 speak(instructions[2], 15000).then(() => {
@@ -38,13 +48,23 @@ const InstructionsPage = ({ navigation }) => {
     };
     return (
         <View style={styles.container}>
+            <Image
+            style={styles.productImage}
+            source={require('C:/Users/maste/Documents/BeautyQ/assets/images/shopping.png')}
+            />
             <Text style={styles.instructionsPage}>
                 Instructions for PETER THOMAS ROTH 24K Gold Mask Pure Luxury Lift & Firm Mask 
             </Text>
-            <Text style={styles.item}>Apply a very generous, non-transparent layer to clean skin, thoroughly covering entire face</Text>
-            <Text style={styles.item}>Allow to remain on for five to ten minutes</Text>
-            <Text style={styles.item}>Rinse thoroughly with warm water</Text>
-            <TouchableOpacity onPress={Speak} style={styles.button}><Text style={styles.buttonText}> Read It! </Text></TouchableOpacity>
+            <View style={styles.instructions}>
+                <Text style={styles.item}>{instructions[0]}</Text>
+                <Text style={styles.item}>{instructions[1]}</Text>
+                <Text style={styles.item}>{instructions[2]}</Text>
+            </View>            
+            <View style={styles.buttons}>
+                <TouchableOpacity style={buttonActive.active==1? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Read Directions</Text></TouchableOpacity>
+                <TouchableOpacity onPress={Speak} style={buttonActive.active==2? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Step-by-step</Text></TouchableOpacity>
+                <TouchableOpacity style={buttonActive.active==3? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
+            </View>            
         </View>
     )
 
