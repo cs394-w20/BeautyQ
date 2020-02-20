@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image, TouchableHighlight } from 'react-native';
 import styles from './styles';
-// import { Tts } from 'react-native-tts';
 import * as Speech from 'expo-speech';
 
 

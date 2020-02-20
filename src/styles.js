@@ -94,4 +94,23 @@ export default StyleSheet.create({
         width: 200,
         marginLeft: '20%',
     },
+    homeLogo: {
+        width: winWidth-60,
+        textAlign: 'center',
+        fontSize: 70,
+        margin: 30
+    },
+    homeButton: {
+        width: winWidth - 20,
+        height: 200,
+        margin: 10,
+        backgroundColor: '#FFD000',
+        borderRadius:10
+    },
+    homeButtonText: {
+        textAlign: 'center',
+        width: winWidth-20,
+        marginTop: 75,
+        fontSize: 40
+    },
 });

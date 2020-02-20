@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import HomePage from './src/home.page';
 import CameraPage from './src/camera.page';
 import InstructionsPage from './src/instructions.page';
 
@@ -12,7 +13,12 @@ export default class App extends React.Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator initialRouteName={'Home'}>
+                    <Stack.Screen
+                        name="Home"
+                        component={ HomePage }
+                        options={{ title:'' }}
+                    />
                     <Stack.Screen 
                         name="Camera" 
                         component={ CameraPage } 
