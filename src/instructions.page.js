@@ -75,7 +75,8 @@ const InstructionsPage = ({ navigation }) => {
             </View>            
             <View style={styles.buttons}>
                 <TouchableOpacity onPress={ReadDirn} style={buttonActive.active==1? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Read Directions</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => StepByStep(SBSInstructions)} style={buttonActive.active==2? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Step-by-step</Text></TouchableOpacity>
+                {/* <TouchableOpacity onPress={() => StepByStep(SBSInstructions)} style={buttonActive.active==2? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Step-by-step</Text></TouchableOpacity> */}
+                <TouchableOpacity onPress={ReadDirn} style={buttonActive.active==2? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Step-by-step</Text></TouchableOpacity>
                 <TouchableOpacity onPress={Tutorial} style={buttonActive.active==3? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
             </View>            
         </View>
