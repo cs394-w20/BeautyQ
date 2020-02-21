@@ -95,9 +95,8 @@ export default StyleSheet.create({
         marginLeft: '20%',
     },
     homeLogo: {
-
         textAlign: 'center',
-        margin: 30,
+        margin: '9%',
     },
     homeButton: {
         width: winWidth - 20,
