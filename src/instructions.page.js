@@ -27,18 +27,25 @@ const InstructionsPage = ({ navigation }) => {
 
     const Speak = () => {
         setbuttonActive({ active: 2});
-        speak(instructions[0], 0).then(() => {
-            speak(instructions[1], 9000).then(() => {
-                speak(instructions[2], 15000).then(() => {
-
-                })
-            })
-        })
-        
+        Speech.speak(instructions[0], {onDone:() => {
+            setTimeout(() => {
+                Speech.speak(instructions[1], {onDone:()=> {
+                    Speech.speak("I will set a five minute timer for you!")
+                    setTimeout(() => {
+                        Speech.speak("BEEP BEEP BEEP BEEP BEEP")
+                        Speech.speak('Your five minutes are up')
+                        Speech.speak(instructions[2]);
+                    }, 10000)
+                }});
+            }, 5000);
+        }})
     };
 
     const ReadDirn = () => {
         setbuttonActive({ active: 1});
+        instructions.forEach((element) => {
+            Speech.speak(element);
+        });
     };
 
     const Tutorial = () => {
