@@ -5,7 +5,7 @@ import * as Speech from 'expo-speech';
 
 
 const InstructionsPage = ({ navigation }) => {
-    const [buttonActive, setbuttonActive] = useState({ active: 2 });
+    const [buttonActive, setbuttonActive] = useState({ active: 0 });
 
     const speak = async (text, time) => {
         setTimeout(() => {
