@@ -1,20 +1,11 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image, TouchableHighlight } from 'react-native';
+import {  View, Text, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
 import * as Speech from 'expo-speech';
 
 
 const InstructionsPage = ({ navigation }) => {
     const [buttonActive, setbuttonActive] = useState({ active: 2 });
-    const localStyle = StyleSheet.create({
-        pressed: {
-            backgroundColor: '#b76e79',
-            borderRadius: 10,
-            width: '33.33%',        
-            marginTop: 10,
-            marginBottom: 10,
-        }
-      });
 
     const speak = async (text, time) => {
         setTimeout(() => {
@@ -69,9 +60,9 @@ const InstructionsPage = ({ navigation }) => {
                 <Text style={styles.item}>{instructions[2]}</Text>
             </View>            
             <View style={styles.buttons}>
-                <TouchableOpacity onPress={ReadDirn} style={buttonActive.active==1? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Read Directions</Text></TouchableOpacity>
-                <TouchableOpacity onPress={Speak} style={buttonActive.active==2? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Step-by-step</Text></TouchableOpacity>
-                <TouchableOpacity onPress={Tutorial} style={buttonActive.active==3? localStyle.pressed : styles.Button}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
+                <TouchableOpacity onPress={ReadDirn} style={buttonActive.active==1? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Read Directions</Text></TouchableOpacity>
+                <TouchableOpacity onPress={Speak} style={buttonActive.active==2? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Step-by-step</Text></TouchableOpacity>
+                <TouchableOpacity onPress={Tutorial} style={buttonActive.active==3? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
             </View>            
         </View>
     )

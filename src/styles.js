@@ -31,7 +31,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     Button: {
-        backgroundColor: '#f6e0c9',
+        backgroundColor: '#BF9100',
         borderRadius: 10,
         width: '33.33%',
         marginTop: 10,
@@ -112,4 +112,11 @@ export default StyleSheet.create({
         marginTop: 30,
         fontSize: 35
     },
+    pressedButton: {
+        backgroundColor: '#c0c0c0',
+        borderRadius: 10,
+        width: '33.33%',        
+        marginTop: 10,
+        marginBottom: 10,
+    }
 });
