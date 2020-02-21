@@ -95,22 +95,21 @@ export default StyleSheet.create({
         marginLeft: '20%',
     },
     homeLogo: {
-        width: winWidth-60,
+
         textAlign: 'center',
-        fontSize: 70,
-        margin: 30
+        margin: 30,
     },
     homeButton: {
         width: winWidth - 20,
-        height: 200,
+        height: '15%',
         margin: 10,
-        backgroundColor: '#FFD000',
+        backgroundColor: '#BF9100',
         borderRadius:10
     },
     homeButtonText: {
         textAlign: 'center',
         width: winWidth-20,
-        marginTop: 75,
-        fontSize: 40
+        marginTop: 30,
+        fontSize: 35
     },
 });

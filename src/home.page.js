@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
 
 const HomePage = ({ navigation }) => {
     return (
         <View>
-            <Text style={ styles.homeLogo }>BeautyQ</Text>
-            
+            <Image style = {styles.homeLogo} source={require('../assets/images/logo.png')}/>
             <TouchableOpacity 
                 style={ styles.homeButton }
                 onPress={ () => navigation.navigate('Camera') }>
