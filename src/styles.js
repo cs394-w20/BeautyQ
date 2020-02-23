@@ -95,7 +95,6 @@ export default StyleSheet.create({
         marginLeft: '20%',
     },
     homeLogo: {
-        textAlign: 'center',
         margin: '9%',
     },
     homeButton: {
@@ -117,5 +116,7 @@ export default StyleSheet.create({
         width: '33.33%',        
         marginTop: 10,
         marginBottom: 10,
+    },
+    vanityProductName: {
     }
 });

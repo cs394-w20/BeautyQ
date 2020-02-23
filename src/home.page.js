@@ -13,7 +13,8 @@ const HomePage = ({ navigation }) => {
             </TouchableOpacity>
 
             <TouchableOpacity 
-                style={ styles.homeButton }>
+                style={ styles.homeButton }
+                onPress={ () => navigation.navigate('Vanity') }>
                 <Text style={ styles.homeButtonText }>View Saved Products</Text>
             </TouchableOpacity>
         </View>
