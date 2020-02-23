@@ -7,11 +7,12 @@ import VanityData from './vanity.data';
 const InstructionsPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState({ active: 0 });
     const product = VanityData[route.params.key];
+    var currInstruction = 0;
 
     const StepByStep = (instr) => {
         if (instr.length == 0) { return; }
 
-        setbuttonActive({ active: 2});
+        setbuttonActive({ active:2 });
         Speech.speak(instr[0]['text'], {
             onDone: () => {
                 Speech.pause();
@@ -28,7 +29,7 @@ const InstructionsPage = ({ navigation, route }) => {
     };
 
     const Tutorial = () => {
-        setbuttonActive({ active: 3 });
+        setbuttonActive({ active:3 });
     };
 
     return (
@@ -50,7 +51,7 @@ const InstructionsPage = ({ navigation, route }) => {
             <View style={styles.buttons}>
                 <TouchableOpacity onPress={ReadDirn} style={buttonActive.active==1? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Read Directions</Text></TouchableOpacity>
                 <TouchableOpacity 
-                    onPress={() => StepByStep(product.sbs_instructions)} 
+                    onPress={() => navigation.navigate('ReadStepByStep', {'key':route.params.key})} 
                     style={buttonActive.active==2? styles.pressedButton : styles.Button}>
                     <Text style={styles.buttonText}>Step-by-step</Text>
                 </TouchableOpacity>

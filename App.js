@@ -7,6 +7,7 @@ import HomePage from './src/home.page';
 import CameraPage from './src/camera.page';
 import VanityPage from './src/vanity.page';
 import InstructionsPage from './src/instructions.page';
+import ReadStepByStepPage from './src/readstepbystep.page';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,10 @@ export default class App extends React.Component {
                     <Stack.Screen 
                         name="Instructions" 
                         component={ InstructionsPage }
+                    />
+                    <Stack.Screen
+                        name="ReadStepByStep"
+                        component={ ReadStepByStepPage }
                     />
                 </Stack.Navigator>
             </NavigationContainer>
