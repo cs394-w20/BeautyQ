@@ -141,5 +141,19 @@ export default StyleSheet.create({
         shadowRadius: 10,
         elevation: 20,
         height: '90%'
+    },
+    instructionCard: {
+        marginTop: '5%',
+        paddingTop: '2%',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: .5,
+        shadowRadius: 10,
+        elevation: 20,
+        width: '90%',
+        marginLeft: '5%'
     }
 });

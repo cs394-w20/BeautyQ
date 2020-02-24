@@ -11,23 +11,27 @@ const data = {
         "sbs_instructions": [
             {
                 "text": "Apply a very generous, non-transparent layer to clean skin, thoroughly covering entire face",
-                "pause": 5000
+                "pause": 5000,
+                "hasPause": false
             },
             {
                 "text": "Allow to remain on for five to ten minutes",
-                "pause": 500
+                "pause": 500,
+                "hasPause": true
             },
-            {
-                "text": "I will set a five minute timer for you",
-                "pause": 10000
-            },
-            {
-                "text": "beep beep beep beep, your five minutes are up",
-                "pause": 500
-            },
+            // {
+            //     "text": "I will set a five minute timer for you",
+            //     "pause": 10000,
+            // },
+            // {
+            //     "text": "beep beep beep beep, your five minutes are up",
+            //     "pause": 500,
+            // },
             {
                 "text": "Rinse thoroughly with warm water",
-                "pause": 5000
+                "pause": 5000,
+                "hasPause": false
+
             }
         ],
         "image": require('../assets/images/shopping.png')
