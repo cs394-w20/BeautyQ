@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 import HomePage from './src/home.page';
 import CameraPage from './src/camera.page';
@@ -10,36 +11,46 @@ import InstructionsPage from './src/instructions.page';
 import ReadStepByStepPage from './src/readstepbystep.page';
 
 const Stack = createStackNavigator();
+const theme = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        primary: '#000000',
+        accent: '#c0c0c0',
+    },
+};
 
 export default class App extends React.Component {
     render() {
         return (
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName={'Home'}>
-                    <Stack.Screen
-                        name="Home"
-                        component={ HomePage }
-                        options={{ title:'' }}
-                    />
-                    <Stack.Screen
-                        name="Vanity"
-                        component={ VanityPage }
-                    />
-                    <Stack.Screen 
-                        name="Camera" 
-                        component={ CameraPage } 
-                        options={{ title:'BeautyQ' }}
-                    />
-                    <Stack.Screen 
-                        name="Instructions" 
-                        component={ InstructionsPage }
-                    />
-                    <Stack.Screen
-                        name="ReadStepByStep"
-                        component={ ReadStepByStepPage }
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <PaperProvider theme={theme}>
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName={'Home'}>
+                        <Stack.Screen
+                            name="Home"
+                            component={ HomePage }
+                            options={{ title:'' }}
+                        />
+                        <Stack.Screen
+                            name="Vanity"
+                            component={ VanityPage }
+                        />
+                        <Stack.Screen 
+                            name="Camera" 
+                            component={ CameraPage } 
+                            options={{ title:'BeautyQ' }}
+                        />
+                        <Stack.Screen 
+                            name="Instructions" 
+                            component={ InstructionsPage }
+                        />
+                        <Stack.Screen
+                            name="ReadStepByStep"
+                            component={ ReadStepByStepPage }
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </PaperProvider>
         );
     };
 };
