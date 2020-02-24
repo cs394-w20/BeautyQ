@@ -125,7 +125,8 @@ export default StyleSheet.create({
     },
     nextstep: {
         padding: 10,
-        margin: 10
+        margin: 10,
+        
     },
     nextcontent: {
         fontSize: 10

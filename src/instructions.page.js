@@ -3,6 +3,7 @@ import {  View, Text, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
+import { Button, Card, Title, Subtitle } from 'react-native-paper';
 
 const InstructionsPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState({ active: 0 });
@@ -34,6 +35,29 @@ const InstructionsPage = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
+            <Card>
+                <Card.Content>
+                    <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
+                    <Title> {product.product_name} </Title>
+                    <Text> {product.brand_name} </Text>
+                    <View style={styles.instructions}>
+                        {
+                            product.raw_instructions.map(instr => (
+                                <Text style={styles.item}>{instr}</Text>
+                            ))
+                        }
+                    </View>
+                </Card.Content>
+                <Card.Actions style={{paddingLeft: '20%'}}>
+                    <Button 
+                        onPress={() => navigation.navigate('ReadStepByStep', {'key':route.params.key})} 
+                        style={styles.nextstep}
+                        mode="contained">
+                            Begin Step By Step
+                        </Button>
+                </Card.Actions>
+            </Card>
+
             <Image
                 style={styles.productImage}
                 source={product.image}

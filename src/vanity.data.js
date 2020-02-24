@@ -1,6 +1,8 @@
 const data = {
     "1234": {
         "name": "PETER THOMAS ROTH 24K Gold Mask Pure Luxury Lift & Firm Mask",
+        "product_name": "24K Gold Mask Pure Luxury Lift & Firm Mask",
+        "brand_name": "Peter Thomas",
         "raw_instructions": [
             "Apply a very generous, non-transparent layer to clean skin, thoroughly covering entire face", 
             "Allow to remain on for five to ten minutes",
