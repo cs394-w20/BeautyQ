@@ -3,6 +3,7 @@ import VanityData from './vanity.data';
 import { View } from 'react-native';
 import { Title, Button } from 'react-native-paper';
 import * as Speech from 'expo-speech';
+import styles from './styles';
 
 const ReadStepByStepPage = ({ navigation, route }) => {
     const [currInstruction, setCurrInstruction] = useState(0);
@@ -24,8 +25,8 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     if (!done) {
         return (
             <View>
-                <Title>{instructions[currInstruction]}</Title>
-                <Button onPress={NextStep}>Next Step</Button>
+                <Title style={styles.sbs_instruct}>{instructions[currInstruction]}</Title>
+                <Button onPress={NextStep} style={styles.nextstep} mode="contained">Next Step</Button>
             </View>
         )
     } else {

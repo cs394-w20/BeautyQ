@@ -33,10 +33,10 @@ export default StyleSheet.create({
     Button: {
         backgroundColor: '#BF9100',
         borderRadius: 10,
-        width: '33.33%',
+        width: '30%',
         marginTop: 10,
         marginBottom: 10,
-        
+        marginHorizontal: 5
     },
     buttonText: {
         textAlign: 'center',
@@ -118,5 +118,16 @@ export default StyleSheet.create({
         marginBottom: 10,
     },
     vanityProductName: {
+    },
+    sbs_instruct: {
+        padding: 10,
+        margin: 10
+    },
+    nextstep: {
+        padding: 10,
+        margin: 10
+    },
+    nextcontent: {
+        fontSize: 10
     }
 });
