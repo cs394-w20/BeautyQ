@@ -126,9 +126,29 @@ export default StyleSheet.create({
     nextstep: {
         padding: 10,
         margin: 10,
-        
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: .5,
+        shadowRadius: 10,
+        elevation: 20
     },
     nextcontent: {
         fontSize: 10
+    },
+    cardStyles: {
+        marginTop: '5%',
+        paddingTop: '2%',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: .5,
+        shadowRadius: 10,
+        elevation: 20,
+        height: '90%'
     }
 });

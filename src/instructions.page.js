@@ -35,7 +35,7 @@ const InstructionsPage = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
-            <Card>
+            <Card style={styles.cardStyles}>
                 <Card.Content>
                     <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
                     <Title> {product.product_name} </Title>
@@ -58,7 +58,7 @@ const InstructionsPage = ({ navigation, route }) => {
                 </Card.Actions>
             </Card>
 
-            <Image
+            {/* <Image
                 style={styles.productImage}
                 source={product.image}
             />
@@ -80,7 +80,7 @@ const InstructionsPage = ({ navigation, route }) => {
                     <Text style={styles.buttonText}>Step-by-step</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={Tutorial} style={buttonActive.active==3? styles.pressedButton : styles.Button}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
-            </View>            
+            </View>             */}
         </View>
     )
 }
