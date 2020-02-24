@@ -99,16 +99,7 @@ export default StyleSheet.create({
     },
     homeButton: {
         width: winWidth - 20,
-        height: '15%',
         margin: 10,
-        backgroundColor: '#BF9100',
-        borderRadius:10
-    },
-    homeButtonText: {
-        textAlign: 'center',
-        width: winWidth-20,
-        marginTop: 30,
-        fontSize: 35
     },
     pressedButton: {
         backgroundColor: '#c0c0c0',
