@@ -1,22 +1,19 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+import {  Button } from 'react-native-paper';
 import styles from './styles';
 
 const HomePage = ({ navigation }) => {
     return (
         <View>
             <Image style = {styles.homeLogo} source={require('../assets/images/logo.png')}/>
-            <TouchableOpacity 
-                style={ styles.homeButton }
-                onPress={ () => navigation.navigate('Camera') }>
-                <Text style={ styles.homeButtonText }>Add New Product</Text>
-            </TouchableOpacity>
+            <Button style = {styles.homeButton} onPress={ () => navigation.navigate('Camera') } mode="contained">
+                Add New Product
+            </Button>
 
-            <TouchableOpacity 
-                style={ styles.homeButton }
-                onPress={ () => navigation.navigate('Vanity') }>
-                <Text style={ styles.homeButtonText }>View Saved Products</Text>
-            </TouchableOpacity>
+            <Button style = {styles.homeButton} onPress={ () => navigation.navigate('Vanity') } mode="contained">
+                View Saved Products
+            </Button>
         </View>
     )
 }
