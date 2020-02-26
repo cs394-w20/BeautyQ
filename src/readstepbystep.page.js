@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import VanityData from './vanity.data';
 import { View } from 'react-native';
 import { Title, Button,Card } from 'react-native-paper';
+import {Timer } from 'react-native-stopwatch-timer';
 import * as Speech from 'expo-speech';
 import styles from './styles';
 
