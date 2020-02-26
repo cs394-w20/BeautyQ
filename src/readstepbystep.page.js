@@ -10,9 +10,8 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [done, setDone] = useState(false);
     const [timer, setTimer] = useState(false);
     const instructions = VanityData[route.params.key]['sbs_instructions'];
-
-    Speech.speak(instructions[currInstruction].text);
-
+    if(!done)
+        Speech.speak(instructions[currInstruction].text);
     const NextStep = () => {
         Speech.stop();
         
@@ -23,10 +22,9 @@ const ReadStepByStepPage = ({ navigation, route }) => {
             setDone(true);
         }
         else if (instructions[currInstruction +1 ].hasPause && timer != true) {
-            setTimer(true);
             setCurrInstruction(currInstruction + 1);
+            setTimer(true);
         } else {
-            setTimer(false);
             setCurrInstruction(currInstruction + 1);
         }
         // Speech.speak(instructions[currInstruction + 1]);
@@ -38,7 +36,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
 
         setTimeout(() => {
             Speech.speak("beep beep beep", {
-                onDone: NextStep,
+                onDone: () => { setTimer(false); NextStep();},
                 })
             // console.log("timed out...");
             // NextStep();
