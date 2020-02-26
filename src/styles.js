@@ -155,5 +155,24 @@ export default StyleSheet.create({
         elevation: 20,
         width: '90%',
         marginLeft: '5%'
+    },
+    introBG: {
+        width: '100%',
+        height:'100%',
+        position:'relative'
+    },
+    introText: {
+        position:'absolute',
+        top: '10%',
+        left: 10,
+        fontSize: 90,
+        color: '#FFFFFF'
+    },
+    introButton: {
+        position:'absolute',
+        top: '53%',
+        left: 10,
+        color: '#FFFFFF',
+
     }
 });

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
+import IntroPage from './src/intro.page';
 import HomePage from './src/home.page';
 import CameraPage from './src/camera.page';
 import VanityPage from './src/vanity.page';
@@ -25,7 +26,11 @@ export default class App extends React.Component {
         return (
             <PaperProvider theme={theme}>
                 <NavigationContainer>
-                    <Stack.Navigator initialRouteName={'Home'}>
+                    <Stack.Navigator initialRouteName={'Intro'}>
+                        <Stack.Screen 
+                            name="Intro"
+                            component= { IntroPage }
+                        />
                         <Stack.Screen
                             name="Home"
                             component={ HomePage }

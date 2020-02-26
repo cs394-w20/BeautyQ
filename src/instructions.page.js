@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {  View, Text, TouchableOpacity, Image } from 'react-native';
+import {  View, Text } from 'react-native';
 import styles from './styles';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
-import { Button, Card, Title, Subtitle } from 'react-native-paper';
+import { Button, Card, Title } from 'react-native-paper';
 
 const InstructionsPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState({ active: 0 });
