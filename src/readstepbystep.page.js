@@ -9,7 +9,9 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [currInstruction, setCurrInstruction] = useState(0);
     const [done, setDone] = useState(false);
     const [timer, setTimer] = useState(false);
+    const [startTimer, setStartTimer] = useState(false);
     const instructions = VanityData[route.params.key]['sbs_instructions'];
+
     if(!done)
         Speech.speak(instructions[currInstruction].text);
     const NextStep = () => {
@@ -27,7 +29,6 @@ const ReadStepByStepPage = ({ navigation, route }) => {
         } else {
             setCurrInstruction(currInstruction + 1);
         }
-        // Speech.speak(instructions[currInstruction + 1]);
     }
 
     const createTimer = () => {
@@ -38,9 +39,11 @@ const ReadStepByStepPage = ({ navigation, route }) => {
             Speech.speak("beep beep beep", {
                 onDone: () => { setTimer(false); NextStep();},
                 })
-            // console.log("timed out...");
-            // NextStep();
         }, 10000);
+    }
+
+    const TimerFinished = () => {
+
     }
 
     if (!done) {
@@ -49,9 +52,12 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                 <Card style={styles.instructionCard}>
                     <Card.Content>
                         <Title style={styles.sbs_instruct}>{instructions[currInstruction].text}</Title>
+                        <View style={{ marginLeft:'30%' }}>
+                            <Timer totalDuration={10000} start={startTimer} handleFinish={TimerFinished}/>
+                        </View>
                     </Card.Content>
                     <Card.Actions style={{marginLeft: '29%'}}>
-                        <Button onPress={createTimer} style={styles.nextstep} mode="contained">Set Timer</Button>
+                        <Button onPress={createTimer} style={styles.nextstep} mode="contained">Start Timer</Button>
                     </Card.Actions>
                 </Card>
             )
@@ -65,10 +71,6 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                     <Button onPress={NextStep} style={styles.nextstep} mode="contained">Next Step</Button>
                 </Card.Actions>
             </Card>
-            // <View>
-            //     <Title style={styles.sbs_instruct}>{instructions[currInstruction]}</Title>
-            //     <Button onPress={NextStep} style={styles.nextstep} mode="contained">Next Step</Button>
-            // </View>
         )
     } else {
         Speech.speak("You have finished all the steps! Click below to return to the instruction page.");
