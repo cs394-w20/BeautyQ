@@ -40,7 +40,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                 })
             // console.log("timed out...");
             // NextStep();
-        }, 1000);
+        }, 10000);
     }
 
     if (!done) {
