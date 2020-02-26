@@ -11,28 +11,29 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [timer, setTimer] = useState(false);
     const instructions = VanityData[route.params.key]['sbs_instructions'];
 
-    if (!timer) {
-        Speech.speak(instructions[currInstruction].text);
-    }
+    Speech.speak(instructions[currInstruction].text);
 
     const NextStep = () => {
         Speech.stop();
         
-        if (instructions[currInstruction].hasPause && timer != true) {
-            setTimer(true);
-        } else {
-            setTimer(false);
-            setCurrInstruction(currInstruction + 1);
-        }
+        
 
         if (currInstruction >= instructions.length - 1) {
             console.log("here");
             setDone(true);
         }
+        else if (instructions[currInstruction +1 ].hasPause && timer != true) {
+            setTimer(true);
+            setCurrInstruction(currInstruction + 1);
+        } else {
+            setTimer(false);
+            setCurrInstruction(currInstruction + 1);
+        }
         // Speech.speak(instructions[currInstruction + 1]);
     }
 
     const createTimer = () => {
+        Speech.stop();
         Speech.speak("I've set a timer for you for 10 minutes")
 
         setTimeout(() => {
@@ -49,7 +50,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
             return (
                 <Card style={styles.instructionCard}>
                     <Card.Content>
-                        <Title style={styles.sbs_instruct}>Set the Timer...</Title>
+                        <Title style={styles.sbs_instruct}>{instructions[currInstruction].text}</Title>
                     </Card.Content>
                     <Card.Actions style={{marginLeft: '29%'}}>
                         <Button onPress={createTimer} style={styles.nextstep} mode="contained">Set Timer</Button>
