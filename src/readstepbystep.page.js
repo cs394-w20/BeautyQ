@@ -20,11 +20,14 @@ const ReadStepByStepPage = ({ navigation, route }) => {
         Speech.stop();
 
         if (currInstruction >= instructions.length - 1) {
+            console.log("here");
             setDone(true);
+        }
+        else if (instructions[currInstruction + 1].hasPause && timer != true) {
+            setCurrInstruction(currInstruction + 1);
+            setTimer(true);
         } else {
-            if (!timer)
-                setCurrInstruction(currInstruction + 1);
-            setTimer(instructions[currInstruction].hasPause);
+            setCurrInstruction(currInstruction + 1);
         }
     }
 
