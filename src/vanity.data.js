@@ -35,6 +35,59 @@ const data = {
             }
         ],
         "image": require('../assets/images/shopping.png')
+    },
+    "2345": {
+        "name": "Murad Essential C Cleanser",
+        "product_name": "Essential C Cleanser",
+        "brand_name": "Murad",
+        "raw_instructions": [
+            "Massage a small amount over dampened face and neck.",
+            "Rinse with warm water and pat dry.",
+            "Follow with a Murad Step two treatment."
+        ],
+        "sbs_instructions": [
+            {
+                "text": "Massage a small amount over dampened face and neck.",
+                "pause": 1000,
+                "hasPause": false
+            },
+            {
+                "text": "Rinse with warm water and pat dry.",
+                "pause": 1000,
+                "hasPause": false
+            },
+            {
+                "text": "Follow with a Murad Step two treatment.",
+                "pause": 1000,
+                "hasPause": false
+            }
+        ],
+        "image": require('../assets/images/Murad.jpeg')
+    }, 
+    "3456": {
+        "name": "Elemis Papaya Enzyme Peel",
+        "product_name": "Papaya Enzyme Peel",
+        "brand_name": "Elemis",
+        "raw_instructions": [
+            "Apply to cleansin skin avoiding delicate areas around the eyes.",
+            "Leave on for 10-15 mintues.",
+            "Rinse with lukewarm water to reveal a brighter complexion"
+        ],
+        "sbs_instructions": [
+            {
+                "text": "Apply to cleansin skin avoiding delicate areas around the eyes.",
+                "hasPause": false
+            },
+            {
+                "text": "Leave on for 10-15 mintues.",
+                "hasPause": false
+            },
+            {
+                "text": "Rinse with lukewarm water to reveal a brighter complexion",
+                "hasPause": false
+            }
+        ],
+        "image": require('../assets/images/Papaya.jpg'),
     }
 }
 
