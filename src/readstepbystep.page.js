@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import VanityData from './vanity.data';
 import { View } from 'react-native';
 import { Title, Button,Card } from 'react-native-paper';
-import { Timer } from 'react-native-stopwatch-timer';
 import * as Speech from 'expo-speech';
 import styles from './styles';
 
@@ -10,12 +9,9 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [currInstruction, setCurrInstruction] = useState(0);
     const [done, setDone] = useState(false);
     const [timer, setTimer] = useState(false);
-    const [startTimer, setStartTimer] = useState(false);
     const instructions = VanityData[route.params.key]['sbs_instructions'];
-
     if(!done)
         Speech.speak(instructions[currInstruction].text);
-    
     const NextStep = () => {
         Speech.stop();
         
@@ -25,28 +21,26 @@ const ReadStepByStepPage = ({ navigation, route }) => {
             console.log("here");
             setDone(true);
         }
-        else if (instructions[currInstruction + 1].hasPause && timer != true) {
+        else if (instructions[currInstruction +1 ].hasPause && timer != true) {
             setCurrInstruction(currInstruction + 1);
             setTimer(true);
         } else {
             setCurrInstruction(currInstruction + 1);
         }
+        // Speech.speak(instructions[currInstruction + 1]);
     }
 
     const createTimer = () => {
-        setStartTimer(true);
         Speech.stop();
         Speech.speak("I've set a timer for you for 10 minutes")
 
         setTimeout(() => {
             Speech.speak("beep beep beep", {
-                onDone: () => { setTimer(false); NextStep(); },
+                onDone: () => { setTimer(false); NextStep();},
                 })
+            // console.log("timed out...");
+            // NextStep();
         }, 10000);
-    }
-
-    const TimerFinished = () => {
-
     }
 
     if (!done) {
@@ -55,12 +49,9 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                 <Card style={styles.instructionCard}>
                     <Card.Content>
                         <Title style={styles.sbs_instruct}>{instructions[currInstruction].text}</Title>
-                        <View style={{ marginLeft:'30%' }}>
-                            <Timer totalDuration={10000} start={startTimer} handleFinish={TimerFinished}/>
-                        </View>
                     </Card.Content>
                     <Card.Actions style={{marginLeft: '29%'}}>
-                        <Button onPress={createTimer} style={styles.nextstep} mode="contained">Start Timer</Button>
+                        <Button onPress={createTimer} style={styles.nextstep} mode="contained">Set Timer</Button>
                     </Card.Actions>
                 </Card>
             )
@@ -74,6 +65,10 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                     <Button onPress={NextStep} style={styles.nextstep} mode="contained">Next Step</Button>
                 </Card.Actions>
             </Card>
+            // <View>
+            //     <Title style={styles.sbs_instruct}>{instructions[currInstruction]}</Title>
+            //     <Button onPress={NextStep} style={styles.nextstep} mode="contained">Next Step</Button>
+            // </View>
         )
     } else {
         Speech.speak("You have finished all the steps! Click below to return to the instruction page.");
