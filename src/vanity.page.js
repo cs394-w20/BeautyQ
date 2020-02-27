@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { ScrollView, Text, FlatList, Image } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import styles from './styles';
 import VanityData from './vanity.data';
 
 const VanityPage = ({ navigation }) => {
     return (
-        <View>
+        <ScrollView>
             {
                 Object.keys(VanityData).map(key => (
                     <Card onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
@@ -17,7 +17,7 @@ const VanityPage = ({ navigation }) => {
                     </Card>
                 ))
             }
-        </View>
+        </ScrollView>
     )
 }
 
