@@ -43,7 +43,7 @@ const InstructionsPage = ({ navigation, route }) => {
                     <View style={styles.instructions}>
                         {
                             product.raw_instructions.map(instr => (
-                                <Text style={styles.item}>{instr}</Text>
+                                <Text style={styles.item} key={instr}>{instr}</Text>
                             ))
                         }
                     </View>

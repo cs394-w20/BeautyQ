@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import VanityData from './vanity.data';
 import { View } from 'react-native';
 import { Title, Button,Card } from 'react-native-paper';
@@ -13,40 +13,34 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [startTimer, setStartTimer] = useState(false);
     const instructions = VanityData[route.params.key]['sbs_instructions'];
 
-    if(!done)
+    if (currInstruction == 0)
         Speech.speak(instructions[currInstruction].text);
     
     const NextStep = () => {
         Speech.stop();
-        
-        
 
         if (currInstruction >= instructions.length - 1) {
-            console.log("here");
             setDone(true);
-        }
-        else if (instructions[currInstruction + 1].hasPause && timer != true) {
-            setCurrInstruction(currInstruction + 1);
-            setTimer(true);
         } else {
-            setCurrInstruction(currInstruction + 1);
+            if (!timer)
+                setCurrInstruction(currInstruction + 1);
+            setTimer(instructions[currInstruction].hasPause);
         }
     }
 
-    const createTimer = () => {
+    useEffect(() => {
+        Speech.speak(instructions[currInstruction].text)
+    }, [currInstruction])
+
+    const TimerFinished = () => {
+        setTimer(false);
+        NextStep();
+    }
+
+    const StartTimer = () => {
         setStartTimer(true);
         Speech.stop();
         Speech.speak("I've set a timer for you for 10 minutes")
-
-        setTimeout(() => {
-            Speech.speak("beep beep beep", {
-                onDone: () => { setTimer(false); NextStep(); },
-                })
-        }, 10000);
-    }
-
-    const TimerFinished = () => {
-
     }
 
     if (!done) {
@@ -60,7 +54,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                         </View>
                     </Card.Content>
                     <Card.Actions style={{marginLeft: '29%'}}>
-                        <Button onPress={createTimer} style={styles.nextstep} mode="contained">Start Timer</Button>
+                        <Button onPress={StartTimer} style={styles.nextstep} mode="contained">Start Timer</Button>
                     </Card.Actions>
                 </Card>
             )
