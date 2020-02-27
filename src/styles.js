@@ -95,10 +95,10 @@ export default StyleSheet.create({
         marginLeft: '20%',
     },
     homeLogo: {
-        margin: '9%',
+        margin: '23%',
     },
     homeButton: {
-        width: winWidth - 20,
+        alignContent: 'center',
         margin: 10,
     },
     pressedButton: {
@@ -116,7 +116,8 @@ export default StyleSheet.create({
     },
     nextstep: {
         padding: 10,
-        margin: 10,
+        marginTop: '2%',
+        marginBottom: '5%',
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -125,6 +126,13 @@ export default StyleSheet.create({
         shadowOpacity: .5,
         shadowRadius: 10,
         elevation: 20
+    },
+    timerCard: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    timer: {
+        alignItems: 'center'
     },
     nextcontent: {
         fontSize: 10
@@ -165,12 +173,13 @@ export default StyleSheet.create({
         position:'absolute',
         top: '10%',
         left: 10,
-        fontSize: 90,
-        color: '#FFFFFF'
+        fontSize: 80,
+        color: '#FFFFFF',
+        fontWeight: 'bold',
     },
     introButton: {
         position:'absolute',
-        top: '53%',
+        top: '80%',
         left: 10,
         color: '#FFFFFF',
 

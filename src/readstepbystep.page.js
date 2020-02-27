@@ -52,11 +52,11 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                 <Card style={styles.instructionCard}>
                     <Card.Content>
                         <Title style={styles.sbs_instruct}>{instructions[currInstruction].text}</Title>
-                        <View style={{ marginLeft:'30%' }}>
+                        <View style={styles.timer}>
                             <Timer totalDuration={10000} start={startTimer} handleFinish={TimerFinished}/>
                         </View>
                     </Card.Content>
-                    <Card.Actions style={{marginLeft: '29%'}}>
+                    <Card.Actions style={styles.timerCard}>
                         <Button onPress={StartTimer} style={styles.nextstep} mode="contained">Start Timer</Button>
                     </Card.Actions>
                 </Card>
