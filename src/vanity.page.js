@@ -1,23 +1,25 @@
 import React from 'react';
-import { ScrollView, Text, FlatList, Image } from 'react-native';
+import { ScrollView, View, FlatList, Image } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import styles from './styles';
 import VanityData from './vanity.data';
 
 const VanityPage = ({ navigation }) => {
     return (
-        <ScrollView>
-            {
-                Object.keys(VanityData).map(key => (
-                    <Card onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
-                        <Card.Content>
-                            <Card.Cover source={ VanityData[key].image }/>
-                            <Title style={ styles.vanityProductName }>{ VanityData[key].name }</Title>
-                        </Card.Content>
-                    </Card>
-                ))
-            }
-        </ScrollView>
+        <View style={{padding: 10, flex: 1,}}>
+            <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                {
+                    Object.keys(VanityData).map(key => (
+                        <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
+                            <Card.Content>
+                                <Image style={styles.cardcover} source={ VanityData[key].image }/>
+                                <Title style={ styles.vanityProductName }>{ VanityData[key].name }</Title>
+                            </Card.Content>
+                        </Card>
+                    ))
+                }
+            </ScrollView>
+        </View>
     )
 }
 

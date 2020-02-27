@@ -148,7 +148,30 @@ export default StyleSheet.create({
         shadowOpacity: .5,
         shadowRadius: 10,
         elevation: 20,
-        height: '90%'
+        height: '90%',
+    },
+    card: {
+        marginTop: '5%',
+        paddingTop: '2%',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: .5,
+        shadowRadius: 10,
+        elevation: 20,
+        height: '35%',
+        width: '90%',
+        justifyContent: 'center',
+        alignSelf: 'center'
+    },
+    cardcover: {
+        flex: 1,
+        height: undefined,
+        width: undefined,
+        padding: '30%',
+        resizeMode: 'contain',
     },
     instructionCard: {
         marginTop: '5%',
