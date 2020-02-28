@@ -19,14 +19,6 @@ const data = {
                 "pause": 500,
                 "hasPause": true
             },
-            // {
-            //     "text": "I will set a five minute timer for you",
-            //     "pause": 10000,
-            // },
-            // {
-            //     "text": "beep beep beep beep, your five minutes are up",
-            //     "pause": 500,
-            // },
             {
                 "text": "Rinse thoroughly with warm water",
                 "pause": 5000,
