@@ -39,6 +39,7 @@ export default class App extends React.Component {
                         <Stack.Screen
                             name="Vanity"
                             component={ VanityPage }
+                            options={{ title:'My Vanity'}}
                         />
                         <Stack.Screen 
                             name="Camera" 
