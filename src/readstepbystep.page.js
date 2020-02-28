@@ -12,6 +12,9 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [timer, setTimer] = useState(false);
     const [startTimer, setStartTimer] = useState(false);
     const instructions = VanityData[route.params.key]['sbs_instructions'];
+
+    if (currInstruction == 0)
+        Speech.speak(instructions[currInstruction].text);
     
     const NextStep = () => {
         Speech.stop();
