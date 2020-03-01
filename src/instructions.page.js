@@ -27,14 +27,14 @@ const InstructionsPage = ({ navigation, route }) => {
             <Card.Actions>
                 <Button 
                     disabled={descriptionToggle} 
-                    style={{float: 'left', width: "50%", height: "100%"}}
+                    style={{width: "58%", marginLeft: '-8%', height: "50px"}}
                     mode="contained"
                     onPress={() => setDescriptionToggle(true)}>
                     Description</Button>
                 <Button 
                     disabled={!descriptionToggle} 
                     mode="contained" 
-                    style={{float: 'right', width: "50%"}}
+                    style={{float: 'right', marginLeft: '0px', width: "58%", height: "50px"}}
                     onPress={() => setDescriptionToggle(false)}>
                         Instructions</Button>
             </Card.Actions>

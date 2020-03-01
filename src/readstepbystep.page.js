@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import VanityData from './vanity.data';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { Title, Button,Card } from 'react-native-paper';
 import { Timer } from 'react-native-stopwatch-timer';
 import * as Speech from 'expo-speech';
@@ -12,6 +12,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [timer, setTimer] = useState(false);
     const [startTimer, setStartTimer] = useState(false);
     const instructions = VanityData[route.params.key]['sbs_instructions'];
+    const product = VanityData[route.params.key]
 
     if (currInstruction == 0)
         Speech.speak(instructions[currInstruction].text);
@@ -51,7 +52,10 @@ const ReadStepByStepPage = ({ navigation, route }) => {
             return (
                 <Card style={styles.instructionCard}>
                     <Card.Content>
-                        <Title style={styles.sbs_instruct}>{instructions[currInstruction].text}</Title>
+                        <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
+                        <Title> {product.product_name} </Title>
+                        <Text> {product.brand_name} </Text>
+                        <Text style={styles.sbs_instruct}>Step {currInstruction + 1}: {instructions[currInstruction].text}</Text>
                         <View style={styles.timer}>
                             <Timer totalDuration={10000} start={startTimer} handleFinish={TimerFinished}/>
                         </View>
@@ -65,7 +69,10 @@ const ReadStepByStepPage = ({ navigation, route }) => {
         return (
             <Card style={styles.instructionCard}>
                 <Card.Content>
-                    <Title style={styles.sbs_instruct}>{instructions[currInstruction].text}</Title>
+                    <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
+                    <Title> {product.product_name} </Title>
+                    <Text> {product.brand_name} </Text>
+                    <Text style={styles.sbs_instruct}>Step {currInstruction + 1}: {instructions[currInstruction].text}</Text>
                 </Card.Content>
                 <Card.Actions style={{marginLeft: '29%'}}>
                     <Button onPress={NextStep} style={styles.nextstep} mode="contained">Next Step</Button>
@@ -77,12 +84,15 @@ const ReadStepByStepPage = ({ navigation, route }) => {
         return (
             <Card style={styles.instructionCard}>
                 <Card.Content>
-                    <Title>You have finished all the steps! Click below to return to the instruction page.</Title>
+                    <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
+                    <Title> {product.product_name} </Title>
+                    <Text> {product.brand_name} </Text>
+                    <Text style={styles.sbs_instruct}>You have finished all the steps! Click below to return to the instruction page.</Text>
                 </Card.Content>
                 <Card.Actions style={{marginLeft: '10%'}}>
                     <Button 
                         onPress={() => navigation.navigate('Instructions', {'key':route.params.key})}
-                        style={{width:'90%', padding: 10,}}
+                        style={{ width:'100%', padding: 1 }}
                         mode="contained">
                             Back to Instruction Page
                     </Button>
