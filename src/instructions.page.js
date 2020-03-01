@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import {  View, Text } from 'react-native';
+import {  View, Text, Fragment } from 'react-native';
 import styles from './styles';
 import { Icon } from 'react-native-elements';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
-import { Button, Card, Title } from 'react-native-paper';
+import { Button, Card, Title, ToggleButton } from 'react-native-paper';
 
 const InstructionsPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState({ active: 0 });
+    const [descriptionToggle, setDescriptionToggle] = useState( true );
     const product = VanityData[route.params.key];
 
     const ReadDirn = () => {
@@ -21,37 +22,80 @@ const InstructionsPage = ({ navigation, route }) => {
         setbuttonActive({ active:3 });
     };
 
+    const ToggleButtons = () => {
+        return (
+            <Card.Actions>
+                <Button 
+                    disabled={descriptionToggle} 
+                    style={{float: 'left', width: "50%", height: "100%"}}
+                    mode="contained"
+                    onPress={() => setDescriptionToggle(true)}>
+                    Description</Button>
+                <Button 
+                    disabled={!descriptionToggle} 
+                    mode="contained" 
+                    style={{float: 'right', width: "50%"}}
+                    onPress={() => setDescriptionToggle(false)}>
+                        Instructions</Button>
+            </Card.Actions>
+        );
+    };
+
+    const InstructionItemHeader = () => {
+        return (
+            <View>
+                <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
+                <Title> {product.product_name} </Title>
+                <Text> {product.brand_name} </Text>
+            </View>
+        );
+    };
+
+    if (!descriptionToggle)
+        return (
+            <View style={styles.container}>
+                <Card style={styles.cardStyles}>
+                    <Card.Content>
+                        <InstructionItemHeader />
+                        <ToggleButtons/>
+                        <View style={styles.instructions}>
+                            {
+                                product.raw_instructions.map(instr => (
+                                    <Text style={styles.item} key={instr}>{instr}</Text>
+                                ))
+                            }
+                        </View>
+                    </Card.Content>
+                    <Card.Actions style={{ justifyContent: 'center'}}>
+                        <Icon
+                            reverse
+                            name='list'
+                            color='black'
+                            size={35}
+                            onPress={() => navigation.navigate('ReadStepByStep', {'key':route.params.key})}
+                        />
+                        <Icon
+                            reverse
+                            name='play-arrow'
+                            color='black'
+                            size={35}
+                            onPress={ReadDirn}
+                        />
+                    </Card.Actions>
+                </Card>
+            </View>
+        )
+
     return (
         <View style={styles.container}>
             <Card style={styles.cardStyles}>
                 <Card.Content>
-                    <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
-                    <Title> {product.product_name} </Title>
-                    <Text> {product.brand_name} </Text>
+                    <InstructionItemHeader />
+                    <ToggleButtons/>
                     <View style={styles.instructions}>
-                        {
-                            product.raw_instructions.map(instr => (
-                                <Text style={styles.item} key={instr}>{instr}</Text>
-                            ))
-                        }
+                        <Text>{ product.description }</Text>
                     </View>
                 </Card.Content>
-                <Card.Actions style={{ justifyContent: 'center'}}>
-                    <Icon
-                        reverse
-                        name='list'
-                        color='black'
-                        size={35}
-                        onPress={() => navigation.navigate('ReadStepByStep', {'key':route.params.key})}
-                    />
-                     <Icon
-                        reverse
-                        name='play-arrow'
-                        color='black'
-                        size={35}
-                        onPress={ReadDirn}
-                    />
-                </Card.Actions>
             </Card>
         </View>
     )
