@@ -60,8 +60,8 @@ const InstructionsPage = ({ navigation, route }) => {
                         <ToggleButtons/>
                         <View style={styles.instructions}>
                             {
-                                product.raw_instructions.map(instr => (
-                                    <Text style={styles.item} key={instr}>{instr}</Text>
+                                product.raw_instructions.map((instr,ind) => (
+                                <Text style={styles.item} key={instr}>Step {ind + 1}: {instr}</Text>
                                 ))
                             }
                         </View>
