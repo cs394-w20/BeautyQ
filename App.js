@@ -30,6 +30,7 @@ export default class App extends React.Component {
                         <Stack.Screen 
                             name="Intro"
                             component= { IntroPage }
+                            options={{ headerShown: false }}
                         />
                         <Stack.Screen
                             name="Home"
