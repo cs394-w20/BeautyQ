@@ -14,7 +14,8 @@ const CameraPage = ({ navigation }) => {
       }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
-        navigation.navigate('Instructions', {'key': '1234'});
+        console.log(data);
+        navigation.navigate('Instructions', {'key': data});
     };
 
     if (hasCameraPermission === null) {
