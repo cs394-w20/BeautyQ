@@ -1,42 +1,66 @@
 import React, {useState} from 'react';
-import {  View, Text, Fragment } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import styles from './styles';
-import { Icon } from 'react-native-elements';
+import { Icon, TouchableOpacity } from 'react-native-elements';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
-import { Button, Card, Title, ToggleButton } from 'react-native-paper';
+import { Button, Card, Title } from 'react-native-paper';
 
 const InstructionsPage = ({ navigation, route }) => {
-    const [buttonActive, setbuttonActive] = useState({ active: 0 });
-    const [descriptionToggle, setDescriptionToggle] = useState( true );
+    const [buttonActive, setbuttonActive] = useState(0);
     const product = VanityData[route.params.key];
 
+    const localStyle = StyleSheet.create({
+        pressed: {
+            width: "50%",
+            flex: 1,
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            borderRadius: 0,
+            borderColor: 'white',
+            borderBottomColor: 'grey',
+            borderBottomWidth: 2
+        } 
+      });
+
     const ReadDirn = () => {
-        setbuttonActive({ active: 1});
+        setbuttonActive(1);
         product.raw_instructions.forEach((element) => {
             Speech.speak(element);
         });
     };
 
     const Tutorial = () => {
-        setbuttonActive({ active:3 });
+        setbuttonActive(3);
     };
 
     const ToggleButtons = () => {
         return (
-            <Card.Actions>
-                <Button 
-                    disabled={descriptionToggle} 
-                    style={{width: "58%", marginLeft: '-8%', height: "50px"}}
-                    mode="contained"
-                    onPress={() => setDescriptionToggle(true)}>
-                    Description</Button>
-                <Button 
-                    disabled={!descriptionToggle} 
-                    mode="contained" 
-                    style={{float: 'right', marginLeft: '0px', width: "58%", height: "50px"}}
-                    onPress={() => setDescriptionToggle(false)}>
-                        Instructions</Button>
+            <Card.Actions style={{flexWrap: 'wrap', alignItems: 'flex-start'}}>
+                <View
+                style={{
+                    borderBottomColor: '#d3d3d3',
+                    borderBottomWidth: 0.5,
+                    width: '100%',
+                }}
+                />      
+                <Button
+                    style={buttonActive == 0? localStyle.pressed : styles.toggleButtons}
+                    mode="outlined"
+                    onPress={() => setbuttonActive(0)}>
+                        <Text style={styles.toggleText}> Description </Text></Button>
+                <Button
+                    mode="outlined" 
+                    style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
+                    onPress={() => setbuttonActive(1)}>
+                        <Text style={styles.toggleText}>Instructions</Text></Button>
+                <View
+                    style={{
+                        borderBottomColor: '#d3d3d3',
+                        borderBottomWidth: 1,
+                        width: '100%'
+                    }}
+                />                
             </Card.Actions>
         );
     };
@@ -51,7 +75,7 @@ const InstructionsPage = ({ navigation, route }) => {
         );
     };
 
-    if (!descriptionToggle)
+    if (buttonActive == 1)
         return (
             <View style={styles.container}>
                 <Card style={styles.cardStyles}>

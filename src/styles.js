@@ -181,7 +181,21 @@ export default StyleSheet.create({
         position:'absolute',
         top: '80%',
         left: 10,
-        color: '#FFFFFF',
+        color: '#FFFFFF'
+    },
+    // instructions page
+    toggleButtons: {
+        width: "50%",
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        borderRadius: 0,
+        borderColor: 'white',
+        
 
+    },
+    toggleText: {
+        color: 'black',
+        textAlign: 'left'
     }
 });
