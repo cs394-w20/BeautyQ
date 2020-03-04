@@ -15,7 +15,6 @@ const CameraPage = ({ navigation }) => {
       }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
-        // console.log("hello.")
         if (Object.keys(VanityData).includes(data))
             navigation.navigate('Instructions', {'key': data});
     };
