@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
@@ -6,6 +6,8 @@ import styles from './styles';
 import VanityData from './vanity.data';
 
 const VanityPage = ({ navigation }) => {
+    const [addButtonOpen, setAddButtonOpen] = useState(false);
+
     return (
         <React.Fragment >
             <Title style={styles.vanity_title_text}> Vanity </Title>
@@ -30,16 +32,17 @@ const VanityPage = ({ navigation }) => {
             </ScrollView>
             <Icon
                 reverse
-                name='camera'
+                name='add'
                 size={35}
+                color={addButtonOpen ? 'gray' : 'black'}
                 containerStyle={{position:'absolute', right:15, bottom:15}}
-                onPress={() => navigation.navigate('Camera')}
+                onPress={() => setAddButtonOpen(!addButtonOpen)}
             />
             <Icon
                 reverse
-                name='add-circle'
+                name='camera'
                 size={35}
-                containerStyle={{position:'absolute', right:115, bottom:15}}
+                containerStyle={{position:'absolute', right:115, bottom:15, display: addButtonOpen ? '' : 'none'}}
                 onPress={() => navigation.navigate('Camera')}
             />
         </React.Fragment>
