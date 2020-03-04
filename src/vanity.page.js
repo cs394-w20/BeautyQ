@@ -5,18 +5,17 @@ import styles from './styles';
 import VanityData from './vanity.data';
 
 const VanityPage = ({ navigation }) => {
-    console.log(Object.keys(VanityData).length)
     return (
         <React.Fragment>
-            <Text style={{color:'#9fa0a4'}}>{Object.keys(VanityData).length} Products</Text>
-            <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
-                <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start',marginLeft:'2.5%'}}>
+            <Text style={styles.vanity_text}>{Object.keys(VanityData).length} Products</Text>
+            <ScrollView style={styles.vanity_scroll} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
+                <View style={styles.vanity_view}>
                     {
                         Object.keys(VanityData).map(key => (
                             <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
                                 <Card.Content>
                                     <Image style={styles.cardcover} source={ VanityData[key].image }/>
-                                    <Title style={ styles.vanityProductName }>{ VanityData[key].name }</Title>
+                                    <Text style={ styles.vanityProductName }>{ VanityData[key].name }</Text>
                                 </Card.Content>
                             </Card>
                         ))

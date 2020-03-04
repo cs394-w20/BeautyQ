@@ -109,7 +109,8 @@ export default StyleSheet.create({
         marginBottom: 10,
     },
     vanityProductName: {
-        fontSize: 15
+        fontSize: 17,
+        fontWeight: 'bold'
     },
     sbs_instruct: {
         padding: 10,
@@ -152,7 +153,7 @@ export default StyleSheet.create({
         height: '90%',
     },
     card: {
-        marginTop: '5%',
+        marginTop: '4%',
         marginHorizontal: '2%',
         paddingTop: '2%',
         shadowColor: '#000',
@@ -163,7 +164,7 @@ export default StyleSheet.create({
         shadowOpacity: .5,
         shadowRadius: 10,
         elevation: 20,
-        height: '45%',
+        height: '40%',
         width: '45%',
         justifyContent: 'center',
         alignSelf: 'center'
@@ -175,6 +176,15 @@ export default StyleSheet.create({
         padding: '45%',
         resizeMode: 'contain',
         marginBottom: '10%'
+    },
+    vanity_scroll: {
+        flex: 1
+    },
+    vanity_text: {
+        color:'#9fa0a4',
+        marginLeft: '3%',
+        marginTop: '2%',
+        marginBottom: '1%'
     },
     vanity_view: {
         flex: 1, 
