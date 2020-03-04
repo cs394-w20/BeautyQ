@@ -7,7 +7,8 @@ import VanityData from './vanity.data';
 
 const VanityPage = ({ navigation }) => {
     return (
-        <React.Fragment>
+        <React.Fragment >
+            <Title style={styles.vanity_title_text}> Vanity </Title>
             <Text style={styles.vanity_text}>{Object.keys(VanityData).length} Products</Text>
             <ScrollView style={styles.vanity_scroll} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
                 <View style={styles.vanity_view}>

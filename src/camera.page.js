@@ -15,8 +15,18 @@ const CameraPage = ({ navigation }) => {
       }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
+        // console.log("hello.")
         if (Object.keys(VanityData).includes(data))
             navigation.navigate('Instructions', {'key': data});
+    };
+
+    const handleBarCodeScannedForAddProduct =({type, data}) => {
+        console.log("here")
+        console.log(data)
+        navigation.navigate('AddProduct', {'key': '0767332150482'});
+
+        if (Object.keys(VanityData).includes(data))
+            navigation.navigate('AddProduct', {'key': data});
     };
 
     if (hasCameraPermission === null) {
@@ -28,7 +38,7 @@ const CameraPage = ({ navigation }) => {
     return (
         <React.Fragment>
             <BarCodeScanner
-                onBarCodeScanned={ handleBarCodeScanned }
+                onBarCodeScanned={ handleBarCodeScannedForAddProduct }
                 style={ styles.preview }
             />
         </React.Fragment>

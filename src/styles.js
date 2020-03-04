@@ -186,6 +186,14 @@ export default StyleSheet.create({
         marginTop: '2%',
         marginBottom: '1%'
     },
+    vanity_title_text: {
+        color:'#000',
+        textAlign: 'center',
+        marginLeft: '3%',
+        marginTop: '10%',
+        marginBottom: '1%',
+        fontSize: 25
+    },
     vanity_view: {
         flex: 1, 
         flexDirection: 'row', 

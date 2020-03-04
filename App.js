@@ -10,6 +10,7 @@ import CameraPage from './src/camera.page';
 import VanityPage from './src/vanity.page';
 import InstructionsPage from './src/instructions.page';
 import ReadStepByStepPage from './src/readstepbystep.page';
+import AddProductPage from './src/addProduct.page';
 
 const Stack = createStackNavigator();
 const theme = {
@@ -54,6 +55,10 @@ export default class App extends React.Component {
                         <Stack.Screen
                             name="ReadStepByStep"
                             component={ ReadStepByStepPage }
+                        />
+                        <Stack.Screen
+                            name="AddProduct"
+                            component= { AddProductPage }
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
