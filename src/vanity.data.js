@@ -27,7 +27,8 @@ const data = {
 
             }
         ],
-        "image": require('../assets/images/shopping.png')
+        "image": require('../assets/images/shopping.png'),
+        "inVanity": true
     },
     "0767332150482": {
         "name": "Murad Essential C Cleanser",
@@ -56,7 +57,8 @@ const data = {
                 "hasPause": false
             }
         ],
-        "image": require('../assets/images/Murad.jpeg')
+        "image": require('../assets/images/Murad.jpeg'),
+        "inVanity": true
     }, 
     "0641628002658": {
         "name": "Elemis Papaya Enzyme Peel",
@@ -83,6 +85,39 @@ const data = {
             }
         ],
         "image": require('../assets/images/Papaya.jpg'),
+        "inVanity": true
+    },
+    "0641628002658": {
+        "name": "TATCHA Pure One-Step Camellia Cleansing Oil",
+        "product_name": "Pure One-Step Camellia Cleansing Oil",
+        "brand_name": "TATCHA",
+        "description": "This 2-in-1 makeup remover and cleanser of Camellia Oil gently melts away impurities, even waterproof makeup, leaving behind pure, silky soft skin.",
+        "raw_instructions": [
+            "begin with Dry hands and face",
+            "Apply one-to-two pumps into the palm of your hands",
+            "Massage into skin in circular motions; The oil will emulsify into a milk melting away makeup and impurities",
+            "Rinse with warm water"
+        ],
+        "sbs_instructions": [
+            {
+                "text": "begin with Dry hands and face",
+                "hasPause": false
+            },
+            {
+                "text": "Apply one-to-two pumps into the palm of your hands",
+                "hasPause": false
+            },
+            {
+                "text": "Massage into skin in circular motions; The oil will emulsify into a milk melting away makeup and impurities",
+                "hasPause": false
+            },
+            {
+                "text": "Rinse with warm water",
+                "hasPause": false
+            }
+        ],
+        "image": require('../assets/images/tatcha.webp'),
+        "inVanity": false
     }
 }
 
