@@ -1,5 +1,5 @@
 const data = {
-    "1234": {
+    "0670367001653": {
         "name": "PETER THOMAS ROTH 24K Gold Mask Pure Luxury Lift & Firm Mask",
         "product_name": "24K Gold Mask Pure Luxury Lift & Firm Mask",
         "brand_name": "Peter Thomas",
@@ -29,7 +29,7 @@ const data = {
         ],
         "image": require('../assets/images/shopping.png')
     },
-    "2345": {
+    "0767332150482": {
         "name": "Murad Essential C Cleanser",
         "product_name": "Essential C Cleanser",
         "brand_name": "Murad",
@@ -58,7 +58,7 @@ const data = {
         ],
         "image": require('../assets/images/Murad.jpeg')
     }, 
-    "3456": {
+    "0641628002658": {
         "name": "Elemis Papaya Enzyme Peel",
         "product_name": "Papaya Enzyme Peel",
         "brand_name": "Elemis",

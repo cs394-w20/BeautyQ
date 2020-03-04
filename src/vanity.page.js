@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
 import { Card, Title } from 'react-native-paper';
+import { Icon } from 'react-native-elements';
 import styles from './styles';
 import VanityData from './vanity.data';
 
