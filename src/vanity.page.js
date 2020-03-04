@@ -13,14 +13,18 @@ const VanityPage = ({ navigation }) => {
             <ScrollView style={styles.vanity_scroll} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
                 <View style={styles.vanity_view}>
                     {
-                        Object.keys(VanityData).map(key => (
-                            <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
-                                <Card.Content>
-                                    <Image style={styles.cardcover} source={ VanityData[key].image }/>
-                                    <Text style={ styles.vanityProductName }>{ VanityData[key].name }</Text>
-                                </Card.Content>
-                            </Card>
-                        ))
+                        Object.keys(VanityData).map(key => {
+                            if (VanityData[key].inVanity) {
+                                return (
+                                    <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
+                                        <Card.Content>
+                                            <Image style={styles.cardcover} source={ VanityData[key].image }/>
+                                            <Text style={ styles.vanityProductName }>{ VanityData[key].name }</Text>
+                                        </Card.Content>
+                                    </Card>
+                                )
+                            }
+                        })
                     }
                 </View>
             </ScrollView>
