@@ -5,7 +5,7 @@ import styles from './styles';
 
 const IntroPage = ({navigation}) => {
     const moveToNextPage = () => {
-        setTimeout(() => {navigation.navigate('Vanity')}, 3000);
+        setTimeout(() => {navigation.navigate('Vanity', {navigated: false})}, 3000);
     }
 
     moveToNextPage()

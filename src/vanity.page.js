@@ -5,8 +5,14 @@ import { Icon } from 'react-native-elements';
 import styles from './styles';
 import VanityData from './vanity.data';
 
-const VanityPage = ({ navigation }) => {
+const VanityPage = ({ navigation, route }) => {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
+
+    if (route.params.navigated) {
+        if (addButtonOpen) {
+            setAddButtonOpen(false)
+        }
+    }
 
     return (
         <React.Fragment >
