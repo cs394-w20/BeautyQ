@@ -11,8 +11,9 @@ const VanityPage = ({ navigation, route }) => {
 
     if (route.params.navigated) {
         if (addButtonOpen) {
-            setAddButtonOpen(false)
+            setAddButtonOpen(false);
         }
+        route.params.navigated = false;
     }
 
     const removeFromVanity = key => {
