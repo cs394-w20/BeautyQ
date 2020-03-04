@@ -23,7 +23,7 @@ const CameraPage = ({ navigation }) => {
     const handleBarCodeScannedForAddProduct =({type, data}) => {
         console.log("here")
         console.log(data)
-        navigation.navigate('AddProduct', {'key': '0767332150482'});
+        navigation.navigate('AddProduct', {'key': data});
 
         if (Object.keys(VanityData).includes(data))
             navigation.navigate('AddProduct', {'key': data});
