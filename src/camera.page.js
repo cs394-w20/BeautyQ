@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import styles from './styles';
+import VanityData from './vanity.data';
 
 const CameraPage = ({ navigation }) => {
     const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -14,8 +15,8 @@ const CameraPage = ({ navigation }) => {
       }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
-        console.log(data);
-        navigation.navigate('Instructions', {'key': data});
+        if (Object.keys(VanityData).includes(data))
+            navigation.navigate('Instructions', {'key': data});
     };
 
     if (hasCameraPermission === null) {

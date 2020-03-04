@@ -23,6 +23,13 @@ const VanityPage = ({ navigation }) => {
                     }
                 </View>
             </ScrollView>
+            <Icon
+                reverse
+                name='camera'
+                size={35}
+                containerStyle={{position:'absolute', right:15, bottom:15}}
+                onPress={() => navigation.navigate('Camera')}
+            />
         </React.Fragment>
     )
 }
