@@ -86,8 +86,7 @@ export default StyleSheet.create({
     instructions: {
         alignContent: 'center',
         justifyContent: 'center',
-        padding: 10
-
+        paddingLeft: 10
     },
     productImage: {
         height: 200,
@@ -149,8 +148,7 @@ export default StyleSheet.create({
         },
         shadowOpacity: .5,
         shadowRadius: 10,
-        elevation: 20,
-        height: '90%',
+        elevation: 20
     },
     card: {
         marginTop: '4%',
@@ -248,5 +246,10 @@ export default StyleSheet.create({
     toggleText: {
         color: 'black',
         textAlign: 'left'
+    },
+    vanityButton: {
+        position: 'absolute',
+        top: '5%',
+        left: '5%'
     }
 });

@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import styles from './styles';
 import { Icon, TouchableOpacity } from 'react-native-elements';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
+import VanityPage from './vanity.page'
 import { Button, Card, Title } from 'react-native-paper';
+
 
 const InstructionsPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState(0);
     const product = VanityData[route.params.key];
 
-    const localStyle = StyleSheet.create({
+    const localStyle = StyleSheet.create({   
         pressed: {
             width: "50%",
             flex: 1,
@@ -20,7 +22,7 @@ const InstructionsPage = ({ navigation, route }) => {
             borderColor: 'white',
             borderBottomColor: 'grey',
             borderBottomWidth: 2
-        } 
+        }
       });
 
     const ReadDirn = () => {
@@ -107,6 +109,14 @@ const InstructionsPage = ({ navigation, route }) => {
                         />
                     </Card.Actions>
                 </Card>
+                <Icon
+                    reverse
+                    name='chevron-left'
+                    color='black'
+                    size={20}
+                    onPress={() => navigation.navigate('Vanity', {'navigated':true})}
+                    containerStyle={styles.vanityButton}
+                />
             </View>
         )
 
@@ -121,6 +131,14 @@ const InstructionsPage = ({ navigation, route }) => {
                     </View>
                 </Card.Content>
             </Card>
+            <Icon
+                reverse
+                name='chevron-left'
+                color='black'
+                size={20}
+                onPress={() => navigation.navigate('Vanity', {'navigated':true})}
+                containerStyle={styles.vanityButton}
+            />
         </View>
     )
 }
