@@ -30,6 +30,13 @@ const VanityPage = ({ navigation }) => {
                 containerStyle={{position:'absolute', right:15, bottom:15}}
                 onPress={() => navigation.navigate('Camera')}
             />
+            <Icon
+                reverse
+                name='add-circle'
+                size={35}
+                containerStyle={{position:'absolute', right:115, bottom:15}}
+                onPress={() => navigation.navigate('Camera')}
+            />
         </React.Fragment>
     )
 }
