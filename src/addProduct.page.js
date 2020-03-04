@@ -22,7 +22,7 @@ const AddProductPage = ({ navigation, route }) => {
         if (product.inVanity) {
             navigation.navigate('Instructions', { 'key':route.params.key })
         } else {
-            product.inVanity = true
+            VanityData[route.params.key].inVanity = true
             navigation.navigate('Vanity')
         }
     }
