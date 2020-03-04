@@ -5,13 +5,26 @@ import { Icon } from 'react-native-elements';
 import styles from './styles';
 import VanityData from './vanity.data';
 
-const VanityPage = ({ navigation }) => {
+const VanityPage = ({ navigation, route }) => {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
+    const [editingVanity, setEditingVanity] = useState(false);
+
+    if (route.params.navigated) {
+        if (addButtonOpen) {
+            setAddButtonOpen(false);
+        }
+        route.params.navigated = false;
+    }
+
+    const removeFromVanity = key => {
+        VanityData[key].inVanity = false;
+        setAddButtonOpen(false);
+    }
 
     return (
         <React.Fragment >
             <Title style={styles.vanity_title_text}> Vanity </Title>
-            <Text style={styles.vanity_text}>{Object.keys(VanityData).length} Products</Text>
+            <Text style={styles.vanity_text}>{Object.keys(VanityData).filter(key => VanityData[key].inVanity).length} Products</Text>
             <ScrollView style={styles.vanity_scroll} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
                 <View style={styles.vanity_view}>
                     {
@@ -19,7 +32,15 @@ const VanityPage = ({ navigation }) => {
                             if (VanityData[key].inVanity) {
                                 return (
                                     <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
+                                        <Icon
+                                                reverse
+                                                name='remove'
+                                                size={15}
+                                                onPress={() => removeFromVanity(key)}
+                                                containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingVanity ? 'flex' : 'none'}}
+                                            />
                                         <Card.Content>
+                                            
                                             <Image style={styles.cardcover} source={ VanityData[key].image }/>
                                             <Text style={ styles.vanityProductName }>{ VanityData[key].name }</Text>
                                         </Card.Content>
@@ -40,9 +61,16 @@ const VanityPage = ({ navigation }) => {
             />
             <Icon
                 reverse
+                name='edit'
+                size={35}
+                containerStyle={{position:'absolute', right:115, bottom:40, display: addButtonOpen ? 'flex' : 'none'}}
+                onPress={() => setEditingVanity(!editingVanity)}
+            />
+            <Icon
+                reverse
                 name='camera'
                 size={35}
-                containerStyle={{position:'absolute', right:115, bottom:15, display: addButtonOpen ? '' : 'none'}}
+                containerStyle={{position:'absolute', right:40, bottom:115, display: addButtonOpen ? 'flex' : 'none'}}
                 onPress={() => navigation.navigate('Camera')}
             />
         </React.Fragment>
