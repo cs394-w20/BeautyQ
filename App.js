@@ -56,6 +56,7 @@ export default class App extends React.Component {
                         <Stack.Screen
                             name="ReadStepByStep"
                             component={ ReadStepByStepPage }
+                            options={{ headerShown: false }}
                         />
                         <Stack.Screen
                             name="AddProduct"

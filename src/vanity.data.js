@@ -67,7 +67,7 @@ const data = {
         "description": "Purifies, revitalizes, smoothes. ELEMIS Papaya Enzyme Peel contains nourishing milk protein, antioxidant rich vitamin E and marine algae to moisturize, repair and protect skin. The newly revealed fresh skin cells are smooth, moisturized and remineralized. Not tested on animals.",
         "raw_instructions": [
             "Apply to cleansin skin avoiding delicate areas around the eyes.",
-            "Leave on for 10-15 mintues.",
+            "Leave on for 10-15 minutes.",
             "Rinse with lukewarm water to reveal a brighter complexion"
         ],
         "sbs_instructions": [
@@ -76,7 +76,7 @@ const data = {
                 "hasPause": false
             },
             {
-                "text": "Leave on for 10-15 mintues.",
+                "text": "Leave on for 10-15 minutes.",
                 "hasPause": false
             },
             {
