@@ -114,7 +114,7 @@ const InstructionsPage = ({ navigation, route }) => {
                     name='chevron-left'
                     color='black'
                     size={20}
-                    onPress={() => navigation.navigate('Vanity', {'navigated':true})}
+                    onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Vanity', {'navigated':true})}}
                     containerStyle={styles.vanityButton}
                 />
             </View>
@@ -136,7 +136,7 @@ const InstructionsPage = ({ navigation, route }) => {
                 name='chevron-left'
                 color='black'
                 size={20}
-                onPress={() => navigation.navigate('Vanity', {'navigated':true})}
+                onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Vanity', {'navigated':true})}}
                 containerStyle={styles.vanityButton}
             />
         </View>

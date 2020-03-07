@@ -91,7 +91,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                 </Card.Content>
                 <Card.Actions style={{marginLeft: '10%'}}>
                     <Button 
-                        onPress={() => navigation.navigate('Instructions', {'key':route.params.key})}
+                        onPress={() => {console.log('back'); Speech.stop(); navigation.navigate('Instructions', {'key':route.params.key})}}
                         style={{ width:'100%', padding: 1 }}
                         mode="contained">
                             Back to Instruction Page
