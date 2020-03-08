@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, ScrollView, View, Text, Image } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
 import styles from './styles';
 import VanityData from './vanity.data';
+import DraggableFlatList from "react-native-draggable-flatlist";
 
 const VanityPage = ({ navigation, route }) => {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
@@ -80,6 +81,38 @@ const VanityPage = ({ navigation, route }) => {
         );
     };
 
+    renderItem = item => {
+        return (
+            <View
+                style={{
+                    width:'90%',
+                    height:150,
+                    margin:'5%'
+                }}
+            >
+                <Image 
+                    style={{
+                        resizeMode: 'contain',
+                        flex: 1,
+                        height:undefined,
+                        width:undefined,
+                        position:'relative',
+                        left:'-30%',
+                        top:'-6%',
+                        margin:'6%'
+                    }}
+                    source={ VanityData[item].image }
+                />
+                <Title style={{
+                    width:'30%',
+                    position:'relative',
+                    left:'40%'
+                }}>
+                    {VanityData[item].product_name}
+                </Title>
+            </View>
+        )
+    }
 
     if (buttonActive === 1)
         return (
@@ -89,40 +122,13 @@ const VanityPage = ({ navigation, route }) => {
                     <ToggleButtons />
                     <Text style={styles.vanity_text}>{Object.keys(VanityData).filter(key => VanityData[key].inVanity).length} Products</Text>
                 </Card>
-                <ScrollView style={styles.vanity_scroll} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
-                <View style={styles.vanity_view}>
-                    {
-                       currentRoutine.map(key => {
-                            if (VanityData[key].inVanity) {
-                                return (
-                                    <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
-                                        <Icon
-                                                reverse
-                                                name='remove'
-                                                size={15}
-                                                onPress={() => removeFromVanity(key)}
-                                                containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingVanity ? 'flex' : 'none'}}
-                                            />
-                                        <Icon
-                                            reverse
-                                            name={ currentRoutine.includes(key) ? 'check':'add' }
-                                            size={15}
-                                            onPress={() => addToRoutine(key)}
-                                            containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingRoutine ? 'flex' : 'none'}}
-                                        />
-                                        <Card.Content>
-                                            
-                                            <Image style={styles.cardcover} source={ VanityData[key].image }/>
-                                            <Text style={ styles.vanityProductName }>{ VanityData[key].name }</Text>
-                                        </Card.Content>
-                                    </Card>
-                                )
-                            }
-                        })
-                    }
+                <View style={{ flex: 1 }}>
+                    <FlatList
+                        data={currentRoutine}
+                        renderItem={({item}) => renderItem(item)}
+                        keyExtractor={item => item}
+                    />
                 </View>
-                
-            </ScrollView>
             <Icon
                 reverse
                 name='play-arrow'
@@ -157,10 +163,17 @@ const VanityPage = ({ navigation, route }) => {
                                             />
                                         <Icon
                                             reverse
-                                            name={ currentRoutine.includes(key) ? 'check':'add' }
+                                            name='check'
                                             size={15}
                                             onPress={() => addToRoutine(key)}
-                                            containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingRoutine ? 'flex' : 'none'}}
+                                            containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingRoutine && currentRoutine.includes(key) ? 'flex' : 'none'}}
+                                        />
+                                        <Icon
+                                            reverse
+                                            name='add'
+                                            size={15}
+                                            onPress={() => addToRoutine(key)}
+                                            containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingRoutine && !currentRoutine.includes(key) ? 'flex' : 'none'}}
                                         />
                                         <Card.Content>
                                             
