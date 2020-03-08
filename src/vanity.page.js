@@ -192,7 +192,7 @@ const VanityPage = ({ navigation, route }) => {
             />
             <Icon
                 reverse
-                name='edit'
+                name='add-box'
                 size={35}
                 containerStyle={{position:'absolute', right:205, bottom:40, display: addButtonOpen ? 'flex' : 'none'}}
                 onPress={() => {setEditingRoutine(!editingRoutine); setEditingVanity(false)}}
