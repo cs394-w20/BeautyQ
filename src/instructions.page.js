@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, Linking } from 'react-native';
 import styles from './styles';
 import { Icon, TouchableOpacity } from 'react-native-elements';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
 import VanityPage from './vanity.page'
 import { Button, Card, Title } from 'react-native-paper';
+import YouTube from 'react-native-youtube';
 
 
 const InstructionsPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState(0);
+    const [youtubePlayer, setyoutubePlayer] = useState({ isReady : false, });
     const product = VanityData[route.params.key];
 
     const localStyle = StyleSheet.create({   
@@ -35,6 +37,16 @@ const InstructionsPage = ({ navigation, route }) => {
     const Tutorial = () => {
         setbuttonActive(3);
     };
+    
+    const openVideo = () => {
+        Linking.canOpenURL('https://youtu.be/TEVbNdN42KI').then(supported => {
+            if (supported) {
+              Linking.openURL('https://youtu.be/TEVbNdN42KI');
+            } else {
+              console.log("Don't know how to open URI: " + 'https://youtu.be/TEVbNdN42KI');
+            }
+          });
+    }
 
     const ToggleButtons = () => {
         return (
@@ -56,6 +68,11 @@ const InstructionsPage = ({ navigation, route }) => {
                     style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
                     onPress={() => setbuttonActive(1)}>
                         <Text style={styles.toggleText}>Instructions</Text></Button>
+                <Button
+                    mode="outlined" 
+                    style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
+                    onPress={() => openVideo()}>
+                        <Text style={styles.toggleText}> Tutorial </Text></Button>
                 <View
                     style={{
                         borderBottomColor: '#d3d3d3',
