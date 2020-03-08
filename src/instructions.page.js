@@ -4,14 +4,11 @@ import styles from './styles';
 import { Icon, TouchableOpacity } from 'react-native-elements';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
-import VanityPage from './vanity.page'
 import { Button, Card, Title } from 'react-native-paper';
-import YouTube from 'react-native-youtube';
 
 
 const InstructionsPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState(0);
-    const [youtubePlayer, setyoutubePlayer] = useState({ isReady : false, });
     const product = VanityData[route.params.key];
 
     const localStyle = StyleSheet.create({   
@@ -38,12 +35,12 @@ const InstructionsPage = ({ navigation, route }) => {
         setbuttonActive(3);
     };
     
-    const openVideo = () => {
-        Linking.canOpenURL('https://youtu.be/TEVbNdN42KI').then(supported => {
+    const openVideo = (link) => {
+        Linking.canOpenURL(link).then(supported => {
             if (supported) {
-              Linking.openURL('https://youtu.be/TEVbNdN42KI');
+              Linking.openURL(link);
             } else {
-              console.log("Don't know how to open URI: " + 'https://youtu.be/TEVbNdN42KI');
+              console.log("Don't know how to open URI: " + link);
             }
           });
     }
@@ -71,7 +68,7 @@ const InstructionsPage = ({ navigation, route }) => {
                 <Button
                     mode="outlined" 
                     style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
-                    onPress={() => openVideo()}>
+                    onPress={() => openVideo(product.tutorial)}>
                         <Text style={styles.toggleText}> Tutorial </Text></Button>
                 <View
                     style={{
