@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, Linking } from 'react-native';
 import styles from './styles';
 import { Icon, TouchableOpacity } from 'react-native-elements';
 import * as Speech from 'expo-speech';
 import VanityData from './vanity.data';
-import VanityPage from './vanity.page'
 import { Button, Card, Title } from 'react-native-paper';
 
 
@@ -35,6 +34,16 @@ const InstructionsPage = ({ navigation, route }) => {
     const Tutorial = () => {
         setbuttonActive(3);
     };
+    
+    const openVideo = (link) => {
+        Linking.canOpenURL(link).then(supported => {
+            if (supported) {
+              Linking.openURL(link);
+            } else {
+              console.log("Don't know how to open URI: " + link);
+            }
+          });
+    }
 
     const ToggleButtons = () => {
         return (
@@ -56,6 +65,11 @@ const InstructionsPage = ({ navigation, route }) => {
                     style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
                     onPress={() => setbuttonActive(1)}>
                         <Text style={styles.toggleText}>Instructions</Text></Button>
+                <Button
+                    mode="outlined" 
+                    style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
+                    onPress={() => openVideo(product.tutorial)}>
+                        <Text style={styles.toggleText}> Tutorial </Text></Button>
                 <View
                     style={{
                         borderBottomColor: '#d3d3d3',

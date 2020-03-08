@@ -28,7 +28,8 @@ const data = {
             }
         ],
         "image": require('../assets/images/shopping.png'),
-        "inVanity": true
+        "inVanity": true,
+        "tutorial": "https://youtu.be/TEVbNdN42KI"
     },
     "0767332150482": {
         "name": "Murad Essential C Cleanser",
@@ -58,7 +59,8 @@ const data = {
             }
         ],
         "image": require('../assets/images/Murad.jpeg'),
-        "inVanity": true
+        "inVanity": true,
+        "tutorial": "https://youtu.be/TEVbNdN42KI"
     }, 
     "0641628002658": {
         "name": "Elemis Papaya Enzyme Peel",
@@ -85,7 +87,8 @@ const data = {
             }
         ],
         "image": require('../assets/images/Papaya.jpg'),
-        "inVanity": true
+        "inVanity": true,
+        "tutorial": "https://youtu.be/TEVbNdN42KI"
     },
     "0030955062051": {
         "name": "TATCHA Pure One-Step Camellia Cleansing Oil",
@@ -117,7 +120,8 @@ const data = {
             }
         ],
         "image": require('../assets/images/tatcha.webp'),
-        "inVanity": false
+        "inVanity": false,
+        "tutorial": "https://youtu.be/TEVbNdN42KI"
     }
 }
 
