@@ -98,7 +98,7 @@ const InstructionsPage = ({ navigation, route }) => {
                             name='list'
                             color='black'
                             size={35}
-                            onPress={() => navigation.navigate('ReadStepByStep', {'key':route.params.key})}
+                            onPress={() => navigation.navigate('ReadStepByStep', {'items': [route.params.key]})}
                         />
                         <Icon
                             reverse

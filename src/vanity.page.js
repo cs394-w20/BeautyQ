@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, Image } from 'react-native';
-import { Card, Title } from 'react-native-paper';
+import { StyleSheet, ScrollView, View, Text, Image } from 'react-native';
+import { Card, Title, Button } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
 import styles from './styles';
 import VanityData from './vanity.data';
 
 const VanityPage = ({ navigation, route }) => {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
+    const [buttonActive, setbuttonActive] = useState(0);
     const [editingVanity, setEditingVanity] = useState(false);
+    const [editingRoutine, setEditingRoutine] = useState(false);
+    const [currentRoutine, setCurrentRoutine] = useState([]);
 
     if (route.params.navigated) {
         if (addButtonOpen) {
@@ -21,10 +24,123 @@ const VanityPage = ({ navigation, route }) => {
         setAddButtonOpen(false);
     }
 
+    const addToRoutine = key => {
+        if (currentRoutine.includes(key)) {
+            var currRoutine = currentRoutine;
+            currRoutine.splice(currRoutine.indexOf(key), 1)
+            setCurrentRoutine(currRoutine)
+        } else {
+            var currRoutine = currentRoutine;
+            currRoutine.push(key);
+            setCurrentRoutine(currRoutine);
+        }
+    };
+
+    const localStyle = StyleSheet.create({   
+        pressed: {
+            width: "50%",
+            flex: 1,
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            borderRadius: 0,
+            borderColor: 'white',
+            borderBottomColor: 'grey',
+            borderBottomWidth: 2
+        }
+      });
+
+    const ToggleButtons = () => {
+        return (
+            <Card.Actions style={{flexWrap: 'wrap', alignItems: 'flex-start'}}>
+                <View
+                style={{
+                    borderBottomColor: '#d3d3d3',
+                    borderBottomWidth: 0.5,
+                    width: '100%',
+                }}
+                />      
+                <Button
+                    style={buttonActive == 0? localStyle.pressed : styles.toggleButtons}
+                    mode="outlined"
+                    onPress={() => setbuttonActive(0)}>
+                        <Text style={styles.toggleText}> My Vanity </Text></Button>
+                <Button
+                    mode="outlined" 
+                    style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
+                    onPress={() => setbuttonActive(1)}>
+                        <Text style={styles.toggleText}> My Routine </Text></Button>
+                <View
+                    style={{
+                        borderBottomColor: '#d3d3d3',
+                        borderBottomWidth: 1,
+                        width: '100%'
+                    }}
+                />                
+            </Card.Actions>
+        );
+    };
+
+
+    if (buttonActive === 1)
+        return (
+            <React.Fragment>
+                <Card>
+                    <Title style={styles.vanity_title_text}> BeautyQ </Title>
+                    <ToggleButtons />
+                    <Text style={styles.vanity_text}>{Object.keys(VanityData).filter(key => VanityData[key].inVanity).length} Products</Text>
+                </Card>
+                <ScrollView style={styles.vanity_scroll} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
+                <View style={styles.vanity_view}>
+                    {
+                       currentRoutine.map(key => {
+                            if (VanityData[key].inVanity) {
+                                return (
+                                    <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
+                                        <Icon
+                                                reverse
+                                                name='remove'
+                                                size={15}
+                                                onPress={() => removeFromVanity(key)}
+                                                containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingVanity ? 'flex' : 'none'}}
+                                            />
+                                        <Icon
+                                            reverse
+                                            name={ currentRoutine.includes(key) ? 'check':'add' }
+                                            size={15}
+                                            onPress={() => addToRoutine(key)}
+                                            containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingRoutine ? 'flex' : 'none'}}
+                                        />
+                                        <Card.Content>
+                                            
+                                            <Image style={styles.cardcover} source={ VanityData[key].image }/>
+                                            <Text style={ styles.vanityProductName }>{ VanityData[key].name }</Text>
+                                        </Card.Content>
+                                    </Card>
+                                )
+                            }
+                        })
+                    }
+                </View>
+                
+            </ScrollView>
+            <Icon
+                reverse
+                name='play-arrow'
+                size={35}
+                color={ 'black'}
+                containerStyle={{position:'absolute', right:15, bottom:15}}
+                onPress={() => navigation.navigate('ReadStepByStep', { 'items':currentRoutine })}
+            />
+            </React.Fragment>
+        );
+    else 
     return (
         <React.Fragment >
-            <Title style={styles.vanity_title_text}> Vanity </Title>
-            <Text style={styles.vanity_text}>{Object.keys(VanityData).filter(key => VanityData[key].inVanity).length} Products</Text>
+            <Card>
+                <Title style={styles.vanity_title_text}> BeautyQ </Title>
+                <ToggleButtons />
+                <Text style={styles.vanity_text}>{Object.keys(VanityData).filter(key => VanityData[key].inVanity).length} Products</Text>
+            </Card>
             <ScrollView style={styles.vanity_scroll} contentContainerStyle={{flexGrow: 1}} scrollEnabled>
                 <View style={styles.vanity_view}>
                     {
@@ -39,6 +155,13 @@ const VanityPage = ({ navigation, route }) => {
                                                 onPress={() => removeFromVanity(key)}
                                                 containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingVanity ? 'flex' : 'none'}}
                                             />
+                                        <Icon
+                                            reverse
+                                            name={ currentRoutine.includes(key) ? 'check':'add' }
+                                            size={15}
+                                            onPress={() => addToRoutine(key)}
+                                            containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingRoutine ? 'flex' : 'none'}}
+                                        />
                                         <Card.Content>
                                             
                                             <Image style={styles.cardcover} source={ VanityData[key].image }/>
@@ -51,6 +174,7 @@ const VanityPage = ({ navigation, route }) => {
                     }
                 </View>
             </ScrollView>
+        
             <Icon
                 reverse
                 name='add'
@@ -64,7 +188,14 @@ const VanityPage = ({ navigation, route }) => {
                 name='edit'
                 size={35}
                 containerStyle={{position:'absolute', right:115, bottom:40, display: addButtonOpen ? 'flex' : 'none'}}
-                onPress={() => setEditingVanity(!editingVanity)}
+                onPress={() => {setEditingVanity(!editingVanity); setEditingRoutine(false);}}
+            />
+            <Icon
+                reverse
+                name='edit'
+                size={35}
+                containerStyle={{position:'absolute', right:205, bottom:40, display: addButtonOpen ? 'flex' : 'none'}}
+                onPress={() => {setEditingRoutine(!editingRoutine); setEditingVanity(false)}}
             />
             <Icon
                 reverse
@@ -73,6 +204,7 @@ const VanityPage = ({ navigation, route }) => {
                 containerStyle={{position:'absolute', right:40, bottom:115, display: addButtonOpen ? 'flex' : 'none'}}
                 onPress={() => navigation.navigate('Camera')}
             />
+            
         </React.Fragment>
     )
 }

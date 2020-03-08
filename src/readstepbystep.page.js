@@ -12,6 +12,9 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [done, setDone] = useState(false);
     const [timer, setTimer] = useState(false);
     const [startTimer, setStartTimer] = useState(false);
+    if (!route.params.key) {
+        route.params.key = route.params.items[0]
+    }
     const instructions = VanityData[route.params.key]['sbs_instructions'];
     const product = VanityData[route.params.key]
 
@@ -49,6 +52,16 @@ const ReadStepByStepPage = ({ navigation, route }) => {
         Speech.speak("I've set a timer for you for 10 minutes")
     }
 
+    const moveToNextProduct = () => {
+        console.log('back'); 
+        Speech.stop(); 
+        setCurrInstruction(0);
+        setDone(false);
+        setTimer(false);
+        setStartTimer(false);
+        navigation.navigate('ReadStepByStep', {'items': route.params.items, 'key': route.params.items[route.params.items.indexOf(route.params.key) + 1]})
+    };
+
     if (!done) {
         if (timer) {
             return (
@@ -72,7 +85,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                     name='chevron-left'
                     color='black'
                     size={20}
-                    onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Instructions', {'key':route.params.key})}}
+                    onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Instructions', {'items': route.params.items, 'key':route.params.key})}}
                     containerStyle={styles.vanityButton}
                     />
                 </View>
@@ -96,12 +109,12 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                 name='chevron-left'
                 color='black'
                 size={20}
-                onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Instructions', {'key':route.params.key})}}
+                onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Instructions', {'items': route.params.items, 'key':route.params.key})}}
                 containerStyle={styles.vanityButton}
                 />
             </View>
         )
-    } else {
+    } else if (route.params.items.indexOf(route.params.key) >= route.params.items.length - 1) {
         Speech.speak("You have finished all the steps! Click below to return to the instruction page.");
         return (
             <View style={styles.container}>
@@ -114,7 +127,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                     </Card.Content>
                     <Card.Actions style={{marginLeft: '10%'}}>
                         <Button 
-                            onPress={() => {console.log('back'); Speech.stop(); navigation.navigate('Instructions', {'key':route.params.key})}}
+                            onPress={() => {console.log('back'); Speech.stop(); navigation.navigate('Instructions', {'items': route.params.items, 'key':route.params.key})}}
                             style={{ width:'100%', padding: 1 }}
                             mode="contained">
                                 Back to Instruction Page
@@ -126,11 +139,41 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                 name='chevron-left'
                 color='black'
                 size={20}
-                onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Instructions', {'key':route.params.key})}}
+                onPress={() => {console.log('stop');Speech.stop();navigation.navigate('Instructions', {'items': route.params.items, 'key':route.params.key})}}
                 containerStyle={styles.vanityButton}
                 />
             </View>
-)
+        )
+    } else {
+        Speech.speak("You have finished all the steps! Click below to navigate to the next product.");
+        return (
+            <View style={styles.container}>
+                <Card style={styles.instructionCard}>
+                    <Card.Content>
+                        <Card.Cover source={product.image} style={styles.productImage}></Card.Cover>
+                        <Title> {product.product_name} </Title>
+                        <Text> {product.brand_name} </Text>
+                        <Text style={styles.sbs_instruct}>You have finished all the steps! Click below to navigate to the next product.</Text>
+                    </Card.Content>
+                    <Card.Actions style={{marginLeft: '10%'}}>
+                        <Button 
+                            onPress={() => {moveToNextProduct()}}
+                            style={{ width:'100%', padding: 1 }}
+                            mode="contained">
+                                Navigate to Next Product
+                        </Button>
+                    </Card.Actions>
+                </Card>
+                <Icon
+                reverse
+                name='chevron-left'
+                color='black'
+                size={20}
+                onPress={() => {moveToNextProduct()}}
+                containerStyle={styles.vanityButton}
+                />
+            </View>
+        )
     }
 }
 
