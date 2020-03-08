@@ -120,7 +120,7 @@ const VanityPage = ({ navigation, route }) => {
                 <Card>
                     <Title style={styles.vanity_title_text}> BeautyQ </Title>
                     <ToggleButtons />
-                    <Text style={styles.vanity_text}>{Object.keys(VanityData).filter(key => VanityData[key].inVanity).length} Products</Text>
+                    <Text style={styles.vanity_text}>{currentRoutine.length} Products</Text>
                 </Card>
                 <View style={{ flex: 1 }}>
                     <FlatList
@@ -134,8 +134,10 @@ const VanityPage = ({ navigation, route }) => {
                 name='play-arrow'
                 size={35}
                 color={ 'black'}
-                containerStyle={{position:'absolute', right:15, bottom:15}}
-                onPress={() => navigation.navigate('ReadStepByStep', { 'items':currentRoutine })}
+                containerStyle={{position:'absolute', right:15, bottom:15, display: currentRoutine.length > 0 ? 'flex' : 'none'}}
+                onPress={() => {
+                        navigation.navigate('ReadStepByStep', { 'items': currentRoutine })
+                }}
             />
             </React.Fragment>
         );
@@ -199,22 +201,22 @@ const VanityPage = ({ navigation, route }) => {
             <Icon
                 reverse
                 name='edit'
-                size={35}
-                containerStyle={{position:'absolute', right:115, bottom:40, display: addButtonOpen ? 'flex' : 'none'}}
+                size={30}
+                containerStyle={{position:'absolute', right:115, bottom:20, display: addButtonOpen ? 'flex' : 'none'}}
                 onPress={() => {setEditingVanity(!editingVanity); setEditingRoutine(false);}}
             />
             <Icon
                 reverse
                 name='playlist-add'
-                size={35}
-                containerStyle={{position:'absolute', right:205, bottom:40, display: addButtonOpen ? 'flex' : 'none'}}
+                size={30}
+                containerStyle={{position:'absolute', right:90, bottom:90, display: addButtonOpen ? 'flex' : 'none'}}
                 onPress={() => {setEditingRoutine(!editingRoutine); setEditingVanity(false)}}
             />
             <Icon
                 reverse
                 name='camera'
-                size={35}
-                containerStyle={{position:'absolute', right:40, bottom:115, display: addButtonOpen ? 'flex' : 'none'}}
+                size={30}
+                containerStyle={{position:'absolute', right:20, bottom:115, display: addButtonOpen ? 'flex' : 'none'}}
                 onPress={() => navigation.navigate('Camera')}
             />
             

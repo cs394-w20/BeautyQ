@@ -41,7 +41,7 @@ export default class App extends React.Component {
                         <Stack.Screen
                             name="Vanity"
                             component={ VanityPage }
-                            options={{ headerShown: false}}
+                            options={{ headerShown: false, gestureEnabled: false,}}
                         />
                         <Stack.Screen 
                             name="Camera" 

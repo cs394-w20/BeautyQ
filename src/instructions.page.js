@@ -65,11 +65,6 @@ const InstructionsPage = ({ navigation, route }) => {
                     style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
                     onPress={() => setbuttonActive(1)}>
                         <Text style={styles.toggleText}>Instructions</Text></Button>
-                <Button
-                    mode="outlined" 
-                    style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
-                    onPress={() => openVideo(product.tutorial)}>
-                        <Text style={styles.toggleText}> Tutorial </Text></Button>
                 <View
                     style={{
                         borderBottomColor: '#d3d3d3',
@@ -120,6 +115,13 @@ const InstructionsPage = ({ navigation, route }) => {
                             color='black'
                             size={35}
                             onPress={ReadDirn}
+                        />
+                        <Icon
+                            reverse
+                            name='ondemand-video'
+                            color='black'
+                            size={35}
+                            onPress={() => openVideo(product.tutorial)}
                         />
                     </Card.Actions>
                 </Card>

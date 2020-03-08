@@ -17,16 +17,11 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     }
     const instructions = VanityData[route.params.key]['sbs_instructions'];
     const product = VanityData[route.params.key]
-
-    // This makes the first step speech play twice
-    // if (currInstruction == 0)
-    //     Speech.speak(instructions[currInstruction].text);
     
     const NextStep = () => {
         Speech.stop();
 
         if (currInstruction >= instructions.length - 1) {
-            console.log("here");
             setDone(true);
         }
         else if (instructions[currInstruction + 1].hasPause && timer != true) {
@@ -77,7 +72,26 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                             </View>
                         </Card.Content>
                         <Card.Actions style={styles.timerCard}>
-                            <Button onPress={StartTimer} style={styles.nextstep} mode="contained">Start Timer</Button>
+                            <Icon
+                                reverse
+                                name='play-arrow'
+                                size={35}
+                                onPress={() => StartTimer()}
+                                containerStyle={{display: startTimer ? 'none' : 'flex'}}
+                            />
+                            <Icon
+                                reverse
+                                name='pause'
+                                size={35}
+                                onPress={() => setStartTimer(false)}
+                                containerStyle={{display: startTimer ? 'flex' : 'none'}}
+                            />
+                            <Icon
+                                reverse
+                                name='skip-next'
+                                size={35}
+                                onPress={() => {TimerFinished(); NextStep()}}
+                            />
                         </Card.Actions>
                     </Card>
                     <Icon
