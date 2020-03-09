@@ -178,11 +178,16 @@ export default StyleSheet.create({
     vanity_scroll: {
         flex: 1
     },
+    routine_text: {
+        color:'#9fa0a4',
+        textAlign: 'right',
+        margin: '2%',
+        marginRight: '30%'
+    },
     vanity_text: {
         color:'#9fa0a4',
-        marginLeft: '3%',
-        marginTop: '2%',
-        marginBottom: '1%'
+        margin: '2%',
+        marginLeft: '5%'
     },
     vanity_title_text: {
         color:'#000',

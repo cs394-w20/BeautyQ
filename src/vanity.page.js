@@ -4,7 +4,6 @@ import { Card, Title, Button } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
 import styles from './styles';
 import VanityData from './vanity.data';
-import DraggableFlatList from "react-native-draggable-flatlist";
 
 const VanityPage = ({ navigation, route }) => {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
@@ -83,35 +82,41 @@ const VanityPage = ({ navigation, route }) => {
 
     renderItem = item => {
         return (
-            <View
-                style={{
-                    width:'90%',
-                    height:150,
-                    margin:'5%'
-                }}
-            >
+            <View>
+                <View
+                    style={{
+                        flex: 1,
+                        width:'90%',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        margin: '5%'
+                    }}
+                >
                 <Image 
                     style={{
-                        resizeMode: 'contain',
-                        flex: 1,
-                        height:undefined,
-                        width:undefined,
-                        position:'relative',
-                        left:'-30%',
-                        top:'-6%',
-                        margin:'6%'
+                        width: '40%',
+                        height: '100%',       
                     }}
                     source={ VanityData[item].image }
                 />
                 <Title style={{
                     width:'30%',
-                    position:'relative',
-                    left:'40%'
+                    margin: '5%'
                 }}>
                     {VanityData[item].product_name}
-                </Title>
+                </Title>                
+                </View>                            
+                <View
+                    style={{
+                        borderTopColor: '#d3d3d3',
+                        borderTopWidth: 1,
+                        width: '90%',
+                        margin: '5%',
+                        marginBottom: 0
+                    }}
+                />
             </View>
-        )
+            )
     }
 
     if (buttonActive === 1)
@@ -120,13 +125,13 @@ const VanityPage = ({ navigation, route }) => {
                 <Card>
                     <Title style={styles.vanity_title_text}> BeautyQ </Title>
                     <ToggleButtons />
-                    <Text style={styles.vanity_text}>{currentRoutine.length} Products</Text>
+                    <Text style={styles.routine_text}>{currentRoutine.length} Products</Text>
                 </Card>
                 <View style={{ flex: 1 }}>
                     <FlatList
                         data={currentRoutine}
                         renderItem={({item}) => renderItem(item)}
-                        keyExtractor={item => item}
+                        keyExtractor = {item => item}
                     />
                 </View>
             <Icon

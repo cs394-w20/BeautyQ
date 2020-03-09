@@ -54,7 +54,7 @@ const InstructionsPage = ({ navigation, route }) => {
                     borderBottomWidth: 0.5,
                     width: '100%',
                 }}
-                />      
+                />
                 <Button
                     style={buttonActive == 0? localStyle.pressed : styles.toggleButtons}
                     mode="outlined"
