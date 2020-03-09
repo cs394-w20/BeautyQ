@@ -68,7 +68,7 @@ const VanityPage = ({ navigation, route }) => {
                     mode="outlined" 
                     style={buttonActive == 1? localStyle.pressed : styles.toggleButtons}
                     onPress={() => setbuttonActive(1)}>
-                        <Text style={styles.toggleText}> My Routine </Text></Button>
+                    <Text style={styles.toggleText}> My Routine </Text></Button>                
                 <View
                     style={{
                         borderBottomColor: '#d3d3d3',
@@ -105,16 +105,19 @@ const VanityPage = ({ navigation, route }) => {
                 }}>
                     {VanityData[item].product_name}
                 </Title>                
-                </View>                            
-                <View
-                    style={{
-                        borderTopColor: '#d3d3d3',
-                        borderTopWidth: 1,
-                        width: '90%',
-                        margin: '5%',
-                        marginBottom: 0
-                    }}
-                />
+                </View>
+                
+                {item != currentRoutine[currentRoutine.length-1] &&
+                    <View
+                        style={{
+                            borderTopColor: '#d3d3d3',
+                            borderTopWidth: 1,
+                            width: '90%',
+                            margin: '5%',
+                            marginBottom: 0
+                        }}
+                    />
+                }
             </View>
             )
     }
@@ -162,12 +165,12 @@ const VanityPage = ({ navigation, route }) => {
                                 return (
                                     <Card style={styles.card} onPress={ () => navigation.navigate('Instructions', { 'key':key })}>
                                         <Icon
-                                                reverse
-                                                name='remove'
-                                                size={15}
-                                                onPress={() => removeFromVanity(key)}
-                                                containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingVanity ? 'flex' : 'none'}}
-                                            />
+                                            reverse
+                                            name='remove'
+                                            size={15}
+                                            onPress={() => removeFromVanity(key)}
+                                            containerStyle={{position:'absolute', right:5, top:0, zIndex:1, display: editingVanity ? 'flex' : 'none'}}
+                                        />
                                         <Icon
                                             reverse
                                             name='check'
