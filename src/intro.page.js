@@ -17,9 +17,6 @@ const IntroPage = ({navigation}) => {
               style={styles.introBG}
             >
                 <Text style={{position:'absolute', top: '50%', left: '30%', fontSize: '40%', color: '#FFFFFF', fontWeight: 'bold'}}>BeautyQ</Text>
-                {/* <Button style={{top: '90%', width: '60%', marginLeft: '20%', borderBottomColor: 'white', borderBottomWidth: 1}} onPress={()=>{navigation.navigate('Vanity'), {'navigated': false}}}>
-                    <Text style={{color: '#FFF'}}>Click Here to Continue</Text>
-                </Button> */}
             </ImageBackground>
         </View>
     )
