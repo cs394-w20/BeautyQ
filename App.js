@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 import IntroPage from './src/intro.page';
-import HomePage from './src/home.page';
 import CameraPage from './src/camera.page';
 import VanityPage from './src/vanity.page';
 import InstructionsPage from './src/instructions.page';
@@ -32,11 +31,6 @@ export default class App extends React.Component {
                             name="Intro"
                             component= { IntroPage }
                             options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                            name="Home"
-                            component={ HomePage }
-                            options={{ title:'' }}
                         />
                         <Stack.Screen
                             name="Vanity"
