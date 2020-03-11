@@ -119,7 +119,7 @@ const data = {
                 "hasPause": false
             }
         ],
-        "image": require('../assets/images/tatcha.webp'),
+        "image": require('../assets/images/tatcha.jpg'),
         "inVanity": false,
         "tutorial": "https://youtu.be/TEVbNdN42KI"
     }
