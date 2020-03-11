@@ -31,7 +31,7 @@ const data = {
         "inVanity": true,
         "tutorial": "https://youtu.be/TEVbNdN42KI"
     },
-    "0767332150482": {
+    "767332151366": {
         "name": "Murad Essential C Cleanser",
         "product_name": "Essential C Cleanser",
         "brand_name": "Murad",
@@ -60,9 +60,9 @@ const data = {
         ],
         "image": require('../assets/images/Murad.jpeg'),
         "inVanity": true,
-        "tutorial": "https://youtu.be/TEVbNdN42KI"
+        "tutorial": null
     }, 
-    "0641628002658": {
+    "641628003723": {
         "name": "Elemis Papaya Enzyme Peel",
         "product_name": "Papaya Enzyme Peel",
         "brand_name": "Elemis",
@@ -88,7 +88,7 @@ const data = {
         ],
         "image": require('../assets/images/Papaya.jpg'),
         "inVanity": true,
-        "tutorial": "https://youtu.be/TEVbNdN42KI"
+        "tutorial": null
     },
     "0030955062051": {
         "name": "TATCHA Pure One-Step Camellia Cleansing Oil",
@@ -121,7 +121,119 @@ const data = {
         ],
         "image": require('../assets/images/tatcha.jpg'),
         "inVanity": false,
-        "tutorial": "https://youtu.be/TEVbNdN42KI"
+        "tutorial": null
+    },
+    850155008433 :{
+        "name" : "Drunk Elephant Protini Polypeptide Cream",
+        "product_name" : "Protini Polypeptide Cream",
+        "brand_name" : "Drunk Elephant",
+        "description" : "A protein moisturizer that combines signal peptides, growth factors, amino acids, and pygmy waterlily to improve the look of skin’s tone, texture, and firmness.",
+        "raw_instructions" : [
+            "Begin with clean, dry skin",
+            "Apply for a vital dose of protein and replenishing moisture the skin needs to retain its youthful appearance."
+        ],
+        "sbs_instructions" : [
+            {
+                "text" : "Begin with clean, dry skin",
+                "hasPause": false 
+            },
+            {
+                "text" : "Apply for a vital dose of protein and replenishing moisture the skin needs to retain its youthful appearance.",
+                "hasPause" : false
+            }
+        ],
+        "image" : require('../assets/images/Polypeptide-Cream.jpeg'),
+        "inVanity" : false,
+        "tutorial" : null
+    }, 
+    717334180208 : {
+        "name" : "Origins Clear Improvement Active Charcoal Mask",
+        "prodduct_name" : "Clear Improvement Active Charcoal Mask",
+        "brand_name": "Origins",
+        "description":"Nature's complexion clean-up crew clears the way for skin to act its best. Clear Improvement® Active Charcoal Mask helps flush out environmental toxins, dirt, and debris that can clog pores and cause skin to look dull—leaving the complexion clarified, refreshed, and healthier-looking. Bamboo charcoal removes excess oil that could lead to blackheads, white China clay absorbs environmental toxins and lecithin dissolves impurities.",
+        "raw_instructions": [
+            "Wash skin with your favorite cleanser",
+            "Apply a generous layer of mask",
+            "Leave on for ten minutes",
+            "Rinse well",
+            "Follow with your favorite moisterizer"
+        ],
+        "sbs_instructions": [
+            {
+                "text":"Wash skin with your favorite cleanser",
+                "hasPause":false
+            },
+            {
+                "text": "Apply a generous layer of mask",
+                "hasPause":false
+            },
+            {
+                "text": "Leave on for 10 minutets",
+                "hasPause":true
+            },
+            {
+                "text": "Rinse well",
+                "hasPause": true
+            },
+            {
+                "text": "Follow with your favorite moisterizer",
+                "hasPause": false
+            }
+        ],
+        "image":require('../assets/images/Charcoal-Mask.jpeg'),
+        "inVanity":false,
+        "tutorial":null
+    },
+    850155008563 : {
+        "name" : "Drunk Elephant B-Hydra Intensive Hydration Serum",
+        "product_name": "B-Hydra Intensive Hydration Serum",
+        "brand_name":"Drunk Elephant",
+        "description": "Formulated with biocompatible ingredients including pro-vitamin B5, pineapple ceramide, and a lentil/apple/watermelon complex, this lightweight serum delivers steady hydration all day as it diminishes drabness, dryness, and the look of fine lines. Your skin will appear healthy, brighter, and more youthful looking.",
+        "raw_instructions": [
+            "Apply B-Hydra to your face, neck, chest, hands, or any place on your body that needs increased hydration.",
+            "Mix with any serum, cream, or oil to lock it in."
+        ],
+        "sbs_instructions": [
+            {
+                "text":"Apply B-Hydra to your face, neck, chest, hands, or any place on your body that needs increased hydration.",
+                "hasPause": false
+            },
+            {
+                "text":"Mix with any serum, cream, or oil to lock it in.",
+                "hasPause":false
+            }
+        ],
+        "image":require('../assets/images/B-Hydra.jpeg'),
+        "inVanity":false,
+        "tutorial":null
+    },
+    651473703204 : {
+        "name" : "Pericone MD Pre:empt Series Daily Foaming Cleanser",
+        "product_name": "Pre:empt Series Daily Foaming Cleanser",
+        "brand_name": "Pericone MD",
+        "description":"A gentle, foam cleanser that thoroughly cleanses and removes makeup without stripping oil-prone skin. One simple step leaves skin feeling soft and visibly rejuvenated.",
+        "raw_instructions":[
+            "Lather a liberal amount in hands",
+            "Gently massage onto skin",
+            "Rinse with warm water"
+        ],
+        "sbs_instructions":[
+            {
+                "text":"Lather a liberal amount in hands",
+                "hasPause":false
+            },
+            {
+                "text": "Gently massage onto skin",
+                "hasPause":false
+            },
+            {
+                "text": "Rinse with warm water",
+                "hasPause":false
+            }
+        ],
+        "image":require('../assets/images/Perricone.jpeg'),
+        "inVanity":false,
+        "tutorial":null
     }
 }
 
