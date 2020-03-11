@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, ScrollView, View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
@@ -12,6 +12,9 @@ const VanityPage = ({ navigation, route }) => {
     const [editingRoutine, setEditingRoutine] = useState(false);
     const [currentRoutine, setCurrentRoutine] = useState([]);
 
+    const [, updateState] = useState();
+    const forceUpdate = useCallback(() => updateState({}), []);
+
     if (route.params.navigated) {
         if (addButtonOpen) {
             setAddButtonOpen(false);
@@ -21,7 +24,9 @@ const VanityPage = ({ navigation, route }) => {
 
     const removeFromVanity = key => {
         VanityData[key].inVanity = false;
-        setAddButtonOpen(false);
+        if (currentRoutine.includes(key))
+            currentRoutine.splice(currentRoutine.indexOf(key), 1)
+        forceUpdate();
     }
 
     const addToRoutine = key => {
@@ -34,6 +39,7 @@ const VanityPage = ({ navigation, route }) => {
             currRoutine.push(key);
             setCurrentRoutine(currRoutine);
         }
+        forceUpdate();
     };
 
     const localStyle = StyleSheet.create({   
@@ -82,7 +88,7 @@ const VanityPage = ({ navigation, route }) => {
 
     renderItem = item => {
         return (
-            <View>
+            <View> 
                 <View
                     style={{
                         flex: 1,
