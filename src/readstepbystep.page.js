@@ -12,6 +12,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
     const [done, setDone] = useState(false);
     const [timer, setTimer] = useState(false);
     const [startTimer, setStartTimer] = useState(false);
+    const [timerComplete, setTimerComplete] = useState(false);
     if (!route.params.key) {
         route.params.key = route.params.items[0]
     }
@@ -38,7 +39,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
 
     const TimerFinished = () => {
         setTimer(false);
-        NextStep();
+        setTimerComplete(true);
     }
 
     const StartTimer = () => {
@@ -77,21 +78,28 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                                 name='play-arrow'
                                 size={35}
                                 onPress={() => StartTimer()}
-                                containerStyle={{display: startTimer ? 'none' : 'flex'}}
+                                containerStyle={{display: startTimer && !timerComplete ? 'none' : 'flex'}}
                             />
                             <Icon
                                 reverse
                                 name='pause'
                                 size={35}
                                 onPress={() => setStartTimer(false)}
-                                containerStyle={{display: startTimer ? 'flex' : 'none'}}
+                                containerStyle={{display: startTimer && !timerComplete ? 'flex' : 'none'}}
                             />
                             <Icon
                                 reverse
                                 name='skip-next'
                                 size={35}
                                 onPress={() => {TimerFinished(); NextStep()}}
+                                containerStyle={{display: timerComplete ? 'none' : 'flex'}}
                             />
+                            <Button 
+                                onPress={() => {moveToNextProduct()}}
+                                style={{ width:'100%', padding: 1, display: timerComplete ? 'flex' : 'none' }}
+                                mode="contained">
+                                    Navigate to Next Product
+                            </Button>
                         </Card.Actions>
                     </Card>
                     <Icon
