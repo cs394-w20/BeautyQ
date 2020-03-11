@@ -17,3 +17,11 @@ Then, in the directory where you have this code, run:
 
 # Deploying
 To Deploy this app, you must be signed in to the appropriate expo account and run from the command line ```expo publish```
+
+
+# Current Bugs / Future Developments
+The timer does not have the ability to add more time after it has gone off
+When selecting items for the routine, the icons do not reload until the page is fully re-rendered. They should switch between check and add.
+Items in the routine cannot be saved and cannot be rearranged by user dragging and dropping
+There is no ability to differentiate between a 'morning' or a 'night' routine and instead they can just have a temporary routine
+Future development should probably integrate with a database of some form rather than the vanity.data.js file that we used to store the information
