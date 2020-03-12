@@ -121,7 +121,7 @@ const InstructionsPage = ({ navigation, route }) => {
                             name='ondemand-video'
                             color='black'
                             size={35}
-                            style={{ display: product.tutorial ? 'flex' : 'none' }}
+                            containerStyle={{ display: product.tutorial ? 'flex' : 'none' }}
                             onPress={() => openVideo(product.tutorial)}
                         />
                     </Card.Actions>
