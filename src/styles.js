@@ -177,7 +177,7 @@ export default StyleSheet.create({
     },
     vanity_scroll: {
         flex: 1,
-        height: '100%'
+        height: '100%',
     },
     routine_text: {
         color:'#9fa0a4',
@@ -200,10 +200,12 @@ export default StyleSheet.create({
     },
     vanity_view: {
         flex: 1, 
+        flexGrow: 1,
         flexDirection: 'row', 
         flexWrap: 'wrap', 
         justifyContent: 'flex-start',
-        marginLeft:'2.5%'
+        marginLeft:'2.5%',
+        paddingBottom: '25%'
     },
     instructionCard: {
         marginTop: '5%',

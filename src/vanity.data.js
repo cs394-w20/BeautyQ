@@ -204,7 +204,7 @@ const data = {
             }
         ],
         "image":require('../assets/images/B-Hydra.jpeg'),
-        "inVanity":false,
+        "inVanity":true,
         "tutorial":null
     },
     "0651473703204" : {
