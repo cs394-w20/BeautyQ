@@ -68,17 +68,17 @@ const data = {
         "brand_name": "Elemis",
         "description": "Purifies, revitalizes, smoothes. ELEMIS Papaya Enzyme Peel contains nourishing milk protein, antioxidant rich vitamin E and marine algae to moisturize, repair and protect skin. The newly revealed fresh skin cells are smooth, moisturized and remineralized. Not tested on animals.",
         "raw_instructions": [
-            "Apply to cleansin skin avoiding delicate areas around the eyes.",
-            "Leave on for 10-15 minutes.",
+            "Apply to clean skin avoiding delicate areas around the eyes.",
+            "Leave on for 10 to 15 minutes.",
             "Rinse with lukewarm water to reveal a brighter complexion"
         ],
         "sbs_instructions": [
             {
-                "text": "Apply to cleansin skin avoiding delicate areas around the eyes.",
+                "text": "Apply to clean skin avoiding delicate areas around the eyes.",
                 "hasPause": false
             },
             {
-                "text": "Leave on for 10-15 minutes.",
+                "text": "Leave on for 10 to 15 minutes.",
                 "hasPause": true
             },
             {
@@ -96,18 +96,18 @@ const data = {
         "brand_name": "TATCHA",
         "description": "This 2-in-1 makeup remover and cleanser of Camellia Oil gently melts away impurities, even waterproof makeup, leaving behind pure, silky soft skin.",
         "raw_instructions": [
-            "begin with Dry hands and face",
-            "Apply one-to-two pumps into the palm of your hands",
+            "Begin with dry hands and face",
+            "Apply one to two pumps into the palm of your hands",
             "Massage into skin in circular motions; The oil will emulsify into a milk melting away makeup and impurities",
             "Rinse with warm water"
         ],
         "sbs_instructions": [
             {
-                "text": "begin with Dry hands and face",
+                "text": "Begin with dry hands and face",
                 "hasPause": false
             },
             {
-                "text": "Apply one-to-two pumps into the palm of your hands",
+                "text": "Apply one to two pumps into the palm of your hands",
                 "hasPause": false
             },
             {
@@ -156,7 +156,7 @@ const data = {
             "Apply a generous layer of mask",
             "Leave on for ten minutes",
             "Rinse well",
-            "Follow with your favorite moisterizer"
+            "Follow with your favorite moisturizer"
         ],
         "sbs_instructions": [
             {
@@ -176,7 +176,7 @@ const data = {
                 "hasPause": true
             },
             {
-                "text": "Follow with your favorite moisterizer",
+                "text": "Follow with your favorite moisturizer",
                 "hasPause": false
             }
         ],
