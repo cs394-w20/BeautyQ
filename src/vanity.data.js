@@ -120,7 +120,7 @@ const data = {
             }
         ],
         "image": require('../assets/images/tatcha.jpg'),
-        "inVanity": true,
+        "inVanity": false,
         "tutorial": null
     },
     "0850155008433" :{
