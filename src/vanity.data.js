@@ -231,7 +231,7 @@ const data = {
                 "hasPause":false
             }
         ],
-        "image":require('../assets/images/Perricone.jpeg'),
+        "image":require('../assets/images/Perricone.jpg'),
         "inVanity":true,
         "tutorial":null
     }
