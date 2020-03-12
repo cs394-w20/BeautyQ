@@ -129,6 +129,7 @@ const VanityPage = ({ navigation, route }) => {
     renderItemDrag = (item, drag) => {
         return (
             <TouchableOpacity
+            onPress={() => navigation.navigate('Instructions', { 'key':item })}
             onLongPress={drag}
             >
                 <View
