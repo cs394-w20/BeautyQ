@@ -168,7 +168,7 @@ const data = {
                 "hasPause":false
             },
             {
-                "text": "Leave on for 10 minutets",
+                "text": "Leave on for 10 minutes",
                 "hasPause":true
             },
             {
