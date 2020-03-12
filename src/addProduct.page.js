@@ -9,6 +9,8 @@ import { Button, Card, Title } from 'react-native-paper';
 const AddProductPage = ({ navigation, route }) => {
     const [buttonActive, setbuttonActive] = useState(0);
     const product = VanityData[route.params.key];
+    console.log(product);
+    console.log(route.params.key);
 
     var ButtonText = "";
 

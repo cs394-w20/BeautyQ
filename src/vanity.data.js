@@ -31,7 +31,7 @@ const data = {
         "inVanity": true,
         "tutorial": "https://youtu.be/TEVbNdN42KI"
     },
-    "767332151366": {
+    "0767332151366": {
         "name": "Murad Essential C Cleanser",
         "product_name": "Essential C Cleanser",
         "brand_name": "Murad",
@@ -62,7 +62,7 @@ const data = {
         "inVanity": true,
         "tutorial": null
     }, 
-    "641628003723": {
+    "0641628003723": {
         "name": "Elemis Papaya Enzyme Peel",
         "product_name": "Papaya Enzyme Peel",
         "brand_name": "Elemis",
@@ -120,10 +120,10 @@ const data = {
             }
         ],
         "image": require('../assets/images/tatcha.jpg'),
-        "inVanity": false,
+        "inVanity": true,
         "tutorial": null
     },
-    850155008433 :{
+    "0850155008433" :{
         "name" : "Drunk Elephant Protini Polypeptide Cream",
         "product_name" : "Protini Polypeptide Cream",
         "brand_name" : "Drunk Elephant",
@@ -143,10 +143,10 @@ const data = {
             }
         ],
         "image" : require('../assets/images/Polypeptide-Cream.jpeg'),
-        "inVanity" : false,
+        "inVanity" : true,
         "tutorial" : null
     }, 
-    717334180208 : {
+    "0717334180208" : {
         "name" : "Origins Clear Improvement Active Charcoal Mask",
         "prodduct_name" : "Clear Improvement Active Charcoal Mask",
         "brand_name": "Origins",
@@ -184,7 +184,7 @@ const data = {
         "inVanity":false,
         "tutorial":null
     },
-    850155008563 : {
+    "0850155008563" : {
         "name" : "Drunk Elephant B-Hydra Intensive Hydration Serum",
         "product_name": "B-Hydra Intensive Hydration Serum",
         "brand_name":"Drunk Elephant",
@@ -207,7 +207,7 @@ const data = {
         "inVanity":false,
         "tutorial":null
     },
-    651473703204 : {
+    "0651473703204" : {
         "name" : "Pericone MD Pre:empt Series Daily Foaming Cleanser",
         "product_name": "Pre:empt Series Daily Foaming Cleanser",
         "brand_name": "Pericone MD",
@@ -232,7 +232,7 @@ const data = {
             }
         ],
         "image":require('../assets/images/Perricone.jpeg'),
-        "inVanity":false,
+        "inVanity":true,
         "tutorial":null
     }
 }
