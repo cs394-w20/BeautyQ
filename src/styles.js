@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { block } from 'react-native-reanimated';
 
 const { width: winWidth, height: winHeight } = Dimensions.get('window');
 
@@ -174,6 +175,13 @@ export default StyleSheet.create({
         padding: '45%',
         resizeMode: 'contain',
         marginBottom: '10%'
+    },
+    routinecover: {
+        height: '100%',
+        width: '40%',
+        padding: '1%',
+        resizeMode: 'contain',
+        marginBottom: '5%'
     },
     vanity_scroll: {
         flex: 1,

@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Component } from 'react';
 import { StyleSheet, ScrollView, View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
 import styles from './styles';
 import VanityData from './vanity.data';
+import DraggableFlatList from "react-native-draggable-flatlist";
 
 const VanityPage = ({ navigation, route }) => {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
@@ -99,10 +100,7 @@ const VanityPage = ({ navigation, route }) => {
                     }}
                 >
                 <Image 
-                    style={{
-                        width: '40%',
-                        height: '100%',       
-                    }}
+                    style={styles.routinecover}
                     source={ VanityData[item].image }
                 />
                 <Title style={{
@@ -128,6 +126,47 @@ const VanityPage = ({ navigation, route }) => {
             )
     }
 
+    renderItemDrag = (item, drag) => {
+        return (
+            <TouchableOpacity
+            onLongPress={drag}
+            >
+                <View
+                    style={{
+                        flex: 1,
+                        width:'90%',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        margin: '5%'
+                    }}
+                >
+                <Image 
+                    style={styles.routinecover}
+                    source={ VanityData[item].image }
+                />
+                <Title style={{
+                    width:'30%',
+                    margin: '5%'
+                }}>
+                    {VanityData[item].product_name}
+                </Title>                
+                </View>
+                
+                {item != currentRoutine[currentRoutine.length-1] &&
+                    <View
+                        style={{
+                            borderTopColor: '#d3d3d3',
+                            borderTopWidth: 1,
+                            width: '90%',
+                            margin: '5%',
+                            marginBottom: 0
+                        }}
+                    />
+                }
+            </TouchableOpacity>
+            )
+    }
+
     if (buttonActive === 1)
         return (
             <React.Fragment>
@@ -136,11 +175,19 @@ const VanityPage = ({ navigation, route }) => {
                     <ToggleButtons />
                     <Text style={styles.routine_text}>{currentRoutine.length} Products</Text>
                 </Card>
-                <View style={{ flex: 1 }}>
+                {/* <View style={{ flex: 1 }}>
                     <FlatList
                         data={currentRoutine}
                         renderItem={({item}) => renderItem(item)}
                         keyExtractor = {item => item}
+                    />
+                </View> */}
+                <View style={{ flex: 1 }}>
+                    <DraggableFlatList
+                        data={currentRoutine}
+                        renderItem={({item, drag}) => renderItemDrag(item, drag)}
+                        keyExtractor={item => item}
+                        onDragEnd={({ data }) => setCurrentRoutine(data)}
                     />
                 </View>
             <Icon
