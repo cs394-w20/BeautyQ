@@ -79,7 +79,7 @@ const data = {
             },
             {
                 "text": "Leave on for 10-15 minutes.",
-                "hasPause": false
+                "hasPause": true
             },
             {
                 "text": "Rinse with lukewarm water to reveal a brighter complexion",

@@ -69,7 +69,7 @@ const ReadStepByStepPage = ({ navigation, route }) => {
                             <Text> {product.brand_name} </Text>
                             <Text style={styles.sbs_instruct}>Step {currInstruction + 1}: {instructions[currInstruction].text}</Text>
                             <View style={styles.timer}>
-                                <Timer totalDuration={10000} start={startTimer} handleFinish={TimerFinished}/>
+                                <Timer totalDuration={60000} start={startTimer} handleFinish={TimerFinished}/>
                             </View>
                         </Card.Content>
                         <Card.Actions style={styles.timerCard}>
