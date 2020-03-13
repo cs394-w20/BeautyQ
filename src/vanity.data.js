@@ -234,6 +234,34 @@ const data = {
         "image":require('../assets/images/Perricone.jpg'),
         "inVanity":true,
         "tutorial":null
+    },
+    "767332100739" : {
+        "name" : "Murad Rapid Age Spot and Pigment Lightening Serum",
+        "product_name": "Rapid Age Spot and Pigment Lightening Serum",
+        "brand_name": "Murad",
+        "description":"Diminishes the appearance of hyperpigmentation, sun damage and dark spots to promote a brighter complexion and repair the visible signs of aging.",
+        "raw_instructions":[
+            "Cleanse skin thoroughly.",
+            "Apply a thin layer over face, neck, chest and hands.",
+            "At night, follow with appropriate Murad moisturizer."
+        ],
+        "sbs_instructions":[
+            {
+                "text": "Cleanse skin thoroughly.",
+                "hasPause":false
+            },
+            {
+                "text": "Apply a thin layer over face, neck, chest and hands.",
+                "hasPause":false
+            },
+            {
+                "text": "At night, follow with appropriate Murad moisturizer.",
+                "hasPause":false
+            }
+        ],
+        "image":require('../assets/images/NEW-MURAD-Rapid-Age-Spot-Pigment-Lightening.jpg'),
+        "inVanity":true,
+        "tutorial":null
     }
 }
 
